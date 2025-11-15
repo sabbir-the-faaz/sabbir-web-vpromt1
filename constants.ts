@@ -4,7 +4,7 @@ import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCir
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
-  title: "Computer Vision Engineer | Researcher | Educator",
+  title: "Engineer | Researcher | Business Development Strategist",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
   bio: "Passionate about driving global change through innovation, seeking a Ph.D. in Computer Engineering to advance computer vision and sustainable technology through research and industry experience. Proven communicator with experience delivering international conference presentations and teaching over 500 students.",
   contact: {
