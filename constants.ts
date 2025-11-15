@@ -4,7 +4,7 @@ import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCir
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
-  title: "Software Engineer & Researcher",
+  title: "Engineer | Researcher | Business Development Strategist",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
   bio: `I'm a passionate Software Engineer and Researcher with a strong background in Computer Science and Engineering. My work focuses on creating innovative solutions using Machine Learning, Computer Vision, and Full-Stack Web Development. I thrive on solving complex problems and am dedicated to continuous learning and pushing the boundaries of technology. With experience leading teams and contributing to significant research projects, I am eager to apply my skills to impactful and challenging opportunities.`,
   contact: {
