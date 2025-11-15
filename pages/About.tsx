@@ -3,7 +3,7 @@ import AnimatedPage from '../components/AnimatedPage';
 import { personalInfo, skills, timelineEvents, education, certifications, publications } from '../constants';
 import { motion } from 'framer-motion';
 import type { TimelineEvent, Education, Skill, Certification, Publication } from '../types';
-import { Link as LinkIcon, CheckCircle } from 'lucide-react';
+import { Link as LinkIcon, CheckCircle, BrainCircuit } from 'lucide-react';
 import { containerVariants, itemVariants } from '../utils/animations';
 
 const About: React.FC = () => {
@@ -186,7 +186,7 @@ const PublicationItem: React.FC<{ publication: Publication }> = ({ publication }
         className="bg-surface p-4 rounded-lg"
         variants={itemVariants}
     >
-        <p className="font-bold">{publication.title}</p>
+        <p className="font-bold">{publication.title} <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full ml-2">{publication.type}</span></p>
         <p className="text-sm text-text-secondary">{publication.details}</p>
         {publication.link && (
             <a href={publication.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-flex items-center gap-1">

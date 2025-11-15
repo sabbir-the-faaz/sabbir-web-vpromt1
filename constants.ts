@@ -1,74 +1,98 @@
 
 import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification } from './types';
-import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle } from 'lucide-react';
+import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit } from 'lucide-react';
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
-  title: "Engineer | Researcher | Business Development Strategist",
+  title: "Computer Vision Engineer | Researcher | Educator",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
-  bio: `I'm a passionate Software Engineer and Researcher with a strong background in Computer Science and Engineering. My work focuses on creating innovative solutions using Machine Learning, Computer Vision, and Full-Stack Web Development. I thrive on solving complex problems and am dedicated to continuous learning and pushing the boundaries of technology. With experience leading teams and contributing to significant research projects, I am eager to apply my skills to impactful and challenging opportunities.`,
+  bio: "Passionate about driving global change through innovation, seeking a Ph.D. in Computer Engineering to advance computer vision and sustainable technology through research and industry experience. Proven communicator with experience delivering international conference presentations and teaching over 500 students.",
   contact: {
-    email: "sabbir.akash@example.com",
-    phone: "+1 (555) 123-4567",
-    address: "Khulna, Bangladesh",
+    email: "sabbir4research@gmail.com",
+    phone: "+880 133 26 53 669",
+    address: "Dhaka, Bangladesh",
   },
   socials: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    researchGate: "https://www.researchgate.net/",
     youtube: "https://youtube.com",
   },
 };
 
 export const skills: Skill[] = [
-  { name: 'JavaScript / TypeScript', level: 95 },
-  { name: 'React / Next.js', level: 90 },
-  { name: 'Node.js / Express', level: 85 },
-  { name: 'Python', level: 90 },
-  { name: 'TensorFlow / PyTorch', level: 80 },
-  { name: 'Computer Vision (OpenCV)', level: 85 },
-  { name: 'MongoDB / SQL', level: 75 },
-  { name: 'Docker / CI/CD', level: 70 },
+  { name: 'Computer Vision (YOLOv8, Detectron2)', level: 90 },
+  { name: 'Python (PyTorch, OpenCV)', level: 95 },
+  { name: 'NVIDIA Jetson Nano', level: 85 },
+  { name: 'C / C++', level: 80 },
+  { name: 'Data Structures & Algorithms', level: 90 },
+  { name: 'SQL & Database Design', level: 75 },
+  { name: 'System Design & Implementation', level: 80 },
+  { name: 'React / Web Development', level: 70 },
 ];
 
 export const timelineEvents: TimelineEvent[] = [
   {
-    type: 'Career',
-    icon: Briefcase,
-    title: 'Software Engineer',
-    subtitle: 'Tech Solutions Inc.',
-    duration: '2022 - Present',
-    description: 'Developed and maintained full-stack web applications, focusing on scalable backend services and responsive user interfaces. Led a project to integrate a machine learning model for real-time data analysis.'
-  },
-  {
     type: 'Teaching',
     icon: BookOpen,
-    title: 'Teaching Assistant',
-    subtitle: 'Khulna University of Engineering & Technology',
-    duration: '2020 - 2021',
-    description: 'Assisted in teaching undergraduate courses on Data Structures and Algorithms. Conducted lab sessions and graded assignments for over 100 students.'
+    title: 'Mathematics & Computer Science Lecturer',
+    subtitle: 'East West School & College, Dhaka',
+    duration: 'June 2025 - Continuing',
+    description: 'Teaching Edexcel O Level & A Level Computer Science and Mathematics. Designing curriculum-aligned lessons on algorithms, Python, and system fundamentals.'
+  },
+  {
+    type: 'Career',
+    icon: Briefcase,
+    title: 'Computer Vision Engineer',
+    subtitle: 'Mart Builders, Sylhet',
+    duration: 'June 2024 - Dec 2024',
+    description: 'Researched and deployed computer vision models (YOLOv8, Detectron2) on Jetson Nano for real-time gas pipeline defect detection. Developed custom datasets and trained models to achieve high accuracy.'
+  },
+  {
+    type: 'Career',
+    icon: Briefcase,
+    title: 'Junior Officer - Business Development',
+    subtitle: 'Picard (A Reputed Leather Bag manufacturing company)',
+    duration: 'Jan 2025 - June 2025',
+    description: 'Worked on leather bag development for Calvin Klein (CK) and Tommy Hilfiger (TH), communicating with buyers and developing prototypes. Presented tech-driven process improvement ideas.'
+  },
+  {
+    type: 'Research',
+    icon: BrainCircuit,
+    title: 'Undergraduate Researcher',
+    subtitle: 'Khulna University of Engineering & Technology (KUET)',
+    duration: '2020 - 2024',
+    description: 'Conducted thesis on "Development of an Automated Grading System for Finished Leather" using Detectron2 and YOLOv8. Also contributed to multiple international journal and conference publications on sustainable engineering solutions.'
   },
   {
     type: 'Leadership',
     icon: Users,
     title: 'Founder & President',
     subtitle: 'Neuronite, KUET',
-    duration: '2019 - 2021',
-    description: 'Founded and led a student organization focused on AI and robotics. Organized workshops, competitions, and seminars, growing the community to over 200 active members.',
+    duration: 'May 2023 - March 2024',
+    description: 'Established and led a 40-member executive team, impacting thousands. Led 9 programs in 1 year, focusing on AI, Machine Learning, and leadership skills. Also focused on social welfare activities.',
     image: 'https://i.imgur.com/wYKiVUA.png'
+  },
+  {
+    type: 'Teaching',
+    icon: BookOpen,
+    title: 'Founder & Teacher',
+    subtitle: 'ParallelX Academia, Khulna',
+    duration: 'May 2020 - Present',
+    description: 'Founded an online STEM-focused organization. Taught mathematics, programming, and science, creating opportunities for others to share their knowledge.'
   },
 ];
 
 export const education: Education[] = [
   {
     institution: 'Khulna University of Engineering & Technology (KUET)',
-    degree: 'Bachelor of Science in Computer Science and Engineering',
-    duration: '2017 - 2021',
+    degree: 'B.Sc in Leather Engineering (CGPA 3.27 out of 4.00)',
+    duration: '2020 - 2024',
     details: [
-      'Graduated with high honors, focusing on Artificial Intelligence and Software Engineering.',
-      'Active member of the university programming club.'
+      'Medium of Education: English.',
+      'Participated in four semesters of undergraduate research, resulting in a thesis, 3 conference publications, and 1 journal publication.'
     ],
-    thesisTitle: 'Real-Time Gas Pipeline Defect Detection using Deep Learning',
+    thesisTitle: 'Development of an Automated Grading System for Finished Leather',
     images: [
       'https://picsum.photos/seed/kuet1/800/600',
       'https://picsum.photos/seed/kuet2/800/600',
@@ -81,45 +105,57 @@ export const education: Education[] = [
 ];
 
 export const certifications: Certification[] = [
-    { name: 'Deep Learning Specialization', issuer: 'Coursera (deeplearning.ai)', date: '2021' },
-    { name: 'TensorFlow Developer Certificate', issuer: 'Google', date: '2021' },
-    { name: 'Certified Kubernetes Application Developer (CKAD)', issuer: 'The Linux Foundation', date: '2022' },
+    { name: 'Google Data Analytics Professional Certificate', issuer: 'Google', date: '9 months' },
+    { name: 'CSE Fundamentals with Phitron', issuer: 'Phitron (Online Programming Bootcamp)', date: 'N/A' },
+    { name: 'Introduction to Artificial Intelligence (AI)', issuer: 'Coursera', date: '4 hours' },
+    { name: 'Introduction to Python', issuer: 'DataCamp', date: '4 hours' },
+    { name: 'Data Science for Everyone', issuer: 'DataCamp', date: '2 hours' },
 ];
 
-
 export const projects: Project[] = [
-  {
-    slug: 'automated-leather-grading',
-    title: 'Automated Grading System for Finished Leather',
-    category: 'Machine Learning',
-    thumbnail: 'https://picsum.photos/seed/leather/600/400',
-    description: 'A computer vision-based system to automatically classify the quality of finished leather, improving efficiency and consistency in the tanning industry.',
-    longDescription: 'This project utilizes advanced image processing and deep learning techniques to analyze leather surfaces for defects. By training a convolutional neural network (CNN) on a large dataset of leather images, the system can accurately grade leather into multiple quality categories, significantly reducing manual labor and human error. The system is designed to be integrated into existing production lines.',
-    images: ['https://picsum.photos/seed/leather-detail1/800/600', 'https://picsum.photos/seed/leather-detail2/800/600'],
-    technologies: ['Python', 'TensorFlow', 'OpenCV', 'Flask', 'React'],
-    liveLink: '#',
-    repoLink: '#'
-  },
   {
     slug: 'gas-pipeline-defect-detection',
     title: 'Real-Time Gas Pipeline Defect Detection',
     category: 'Computer Vision',
     thumbnail: 'https://picsum.photos/seed/pipeline/600/400',
-    description: 'A real-time system for detecting defects in gas pipelines using camera-equipped robots and deep learning models.',
-    longDescription: 'This project aims to enhance safety and maintenance efficiency in the gas industry. A custom-trained YOLOv8 model is deployed on an edge device attached to a pipeline inspection robot. The system processes video streams in real-time to identify and locate defects such as corrosion, cracks, and leaks, alerting operators immediately.',
+    description: 'Deployed YOLOv8 and Detectron2 on Jetson Nano for real-time gas pipeline defect detection, integrated into a Mars rover-inspired robot.',
+    longDescription: 'As a Computer Vision Engineer at Mart Builders, I led the research and deployment of computer vision models for industrial safety. This involved developing custom datasets, training models for high-accuracy crack detection, and integrating the AI system into a robotic platform to apply computational techniques to real-world problems.',
     images: ['https://picsum.photos/seed/pipeline-detail1/800/600', 'https://picsum.photos/seed/pipeline-detail2/800/600'],
-    technologies: ['Python', 'PyTorch', 'YOLOv8', 'ROS', 'OpenCV'],
+    technologies: ['Python', 'PyTorch', 'YOLOv8', 'Detectron2', 'Jetson Nano', 'OpenCV'],
+    repoLink: '#'
+  },
+  {
+    slug: 'automated-leather-grading',
+    title: 'Automated Grading System for Finished Leather',
+    category: 'Machine Learning',
+    thumbnail: 'https://picsum.photos/seed/leather/600/400',
+    description: 'My undergraduate thesis, this system employs Detectron2 for defect segmentation and YOLOv8 for hair root detection, achieving a mAP50 of 0.995.',
+    longDescription: 'This project aimed to automate the quality control process in the leather industry. It utilizes Detectron2 with ResNet50 for instance segmentation of defects and YOLOv8 to detect subtle imperfections like hair roots. The models achieved high precision (0.928) and recall (0.977). Data was collected from Apex Footwear Limited, and results were analyzed against original samples.',
+    images: ['https://picsum.photos/seed/leather-detail1/800/600', 'https://picsum.photos/seed/leather-detail2/800/600'],
+    technologies: ['Python', 'Detectron2', 'YOLOv8', 'ResNet50', 'Computer Vision'],
     repoLink: '#'
   },
   {
     slug: 'ride-sharing-system',
     title: 'Ride-Sharing System',
-    category: 'Web Development',
+    category: 'Software Engineering',
     thumbnail: 'https://picsum.photos/seed/ride/600/400',
-    description: 'A full-stack ride-sharing web application with real-time geolocation tracking, user authentication, and a payment gateway.',
-    longDescription: 'A comprehensive MERN stack application that mimics the functionality of popular ride-sharing services. It features user and driver roles, real-time map integration using Mapbox, WebSocket communication for location updates, secure authentication with JWT, and payment processing with Stripe.',
+    description: 'A Python-based Object-Oriented Programming (OOP) system for user management, ride matching, and payment processing.',
+    longDescription: 'Completed as part of my coursework, this project demonstrates core software engineering principles. It is a Python-based system built with OOP concepts for handling user registration, matching riders with drivers, and simulating payment processing.',
     images: ['https://picsum.photos/seed/ride-detail1/800/600'],
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'WebSocket', 'Stripe API'],
+    technologies: ['Python', 'OOP', 'System Design'],
+    liveLink: '#',
+    repoLink: '#'
+  },
+  {
+    slug: 'restaurant-management-system',
+    title: 'Restaurant Management System',
+    category: 'Software Engineering',
+    thumbnail: 'https://picsum.photos/seed/restaurant/600/400',
+    description: 'A Python-based system for menu handling and order processing in a restaurant environment.',
+    longDescription: 'Another coursework project focused on practical application of software engineering. This Python system provides functionalities for managing a restaurant\'s menu and processing customer orders, built with clean, object-oriented code.',
+    images: ['https://picsum.photos/seed/restaurant-detail1/800/600'],
+    technologies: ['Python', 'OOP', 'System Design'],
     liveLink: '#',
     repoLink: '#'
   }
@@ -192,57 +228,45 @@ The path to a greener future requires a fundamental shift in how we design, buil
 
 export const researchProjects: ResearchProject[] = [
     {
-        slug: 'leather-grading-research',
-        title: 'Automated Grading System for Finished Leather using Image Processing',
-        institution: 'Khulna University of Engineering & Technology',
-        duration: '2020-2021',
-        supervisor: 'Dr. John Doe',
-        description: 'Pioneering research on applying CNNs for quality control in the leather industry.',
+        slug: 'leather-grading-thesis',
+        title: 'THESIS: Development of an Automated Grading System for Finished Leather',
+        institution: 'Khulna University of Engineering & Technology (KUET)',
+        duration: '2020-2024',
+        supervisor: 'Prof. Dr. Md. Abul Hashem',
+        description: 'Employs Detectron2 with resnet50 for defect instance segmentation and YOLOv8 for hair roots, achieving Precision:0.928, Recall: 0.977, mAP50: 0.995.',
         longDescription: 'This undergraduate thesis project developed a novel system for automatically grading finished leather. It involved creating a custom dataset, training a VGG-16 based convolutional neural network, and achieving over 95% accuracy in classifying leather into four distinct grades. The work was published and presented at an international conference.',
         image: 'https://picsum.photos/seed/leather-tech/800/400',
         images: ['https://picsum.photos/seed/leather-tech-detail1/800/600', 'https://picsum.photos/seed/leather-tech-detail2/800/600'],
     },
     {
-        slug: 'pipeline-defect-detection-research',
-        title: 'Real-Time Gas Pipeline Defect Detection using Computer Vision',
-        institution: 'Independent Research',
-        duration: '2021',
-        supervisor: 'N/A',
-        description: 'An independent project focusing on the practical application of YOLO models for industrial safety.',
-        longDescription: 'This research focused on optimizing a YOLOv8 model for deployment on edge devices for real-time video analysis. The project addressed challenges like varying light conditions and motion blur. The resulting system demonstrated high-speed, accurate defect detection capabilities, which was documented in a technical report and shared as an open-source project.',
-        image: 'https://picsum.photos/seed/pipeline-cv/800/400',
-        images: ['https://picsum.photos/seed/pipeline-cv-detail1/800/600'],
-        videoUrl: 'https://www.youtube.com/embed/ScMzIvxBSi4',
-    },
-    {
         slug: 'compost-technique-research',
-        title: 'Atypical co-composting technique for degrading tannery solid waste',
-        institution: 'Journal of Environmental Management',
-        duration: 'Published 2022',
-        supervisor: 'Multiple Authors',
-        description: 'Investigating a novel composting method to safely degrade solid waste from tanneries.',
+        title: 'International Journal: Atypical co-composting technique of managing tannery limed fleshing',
+        institution: 'Md. Abul Hashem\'s Lab',
+        duration: 'Published 2024',
+        supervisor: 'Prof. Dr. Md. Abul Hashem',
+        description: 'Developed an atypical co-composting technique to transform tannery limed fleshing into nutrient-rich compost, reducing solid waste pollution.',
         longDescription: 'This research presents a new co-composting method that effectively breaks down harmful solid waste from the leather tanning process. By optimizing the mix of waste materials and microbial activity, the technique reduces environmental impact and produces a safe, usable compost.',
         image: 'https://picsum.photos/seed/compost-science/800/400',
         images: ['https://picsum.photos/seed/compost-science-detail1/800/600'],
     },
-     {
+    {
         slug: 'goatskin-preservation-research',
-        title: 'Sustainable Goatskin Preservation using Bagasse',
+        title: 'International Conference: Bagasse for goatskin preservation to reduce chloride in soaking operation',
         institution: 'Research Project',
         duration: '2020',
         supervisor: 'Research Team',
-        description: 'An innovative, eco-friendly approach to preserving goatskin using sugarcane bagasse.',
+        description: 'Conducted research on sustainable goat skin preservation methods using plant-based alternatives to reduce environmental impact.',
         longDescription: 'This study explored the use of bagasse, a byproduct of sugarcane processing, as a natural and sustainable agent for preserving goatskin. The method aims to replace or reduce the reliance on salt-based preservation, which has a significant negative environmental footprint.',
         image: 'https://i.imgur.com/cN9pjkI.png'
     },
     {
         slug: 'chromium-adsorption-research',
-        title: 'Adsorption of chromium from tannery wastewater',
+        title: 'International Conference: Adsorption of chromium from tannery wastewater on russet potato peel charcoal',
         institution: 'Environmental Science Research',
         duration: '2021',
         supervisor: 'Lab Team',
-        description: 'Developing a method to remove toxic chromium from tannery wastewater using natural adsorbents.',
-        longDescription: 'This project focused on the synthesis and application of a novel adsorbent material derived from agricultural waste to remove hexavalent chromium from industrial wastewater. The research involved material characterization, adsorption kinetics, and isotherm studies, demonstrating high efficiency and reusability.',
+        description: 'Investigated chromium adsorption from tannery wastewater using russet potato peel charcoal, achieving 98.9% chromium removal.',
+        longDescription: 'This project focused on an eco-friendly adsorbent to remove toxic chromium from industrial wastewater. The research involved optimizing parameters like pH, contact time, and dose to meet discharge limits. Published in Proceedings of ICSTB-2021, Dhaka, Bangladesh.',
         image: 'https://picsum.photos/seed/chemistry-water/800/400',
         images: ['https://i.imgur.com/9KAJR8t.png', 'https://i.imgur.com/Qgobdft.png', 'https://i.imgur.com/1JeMFXz.png'],
     },
@@ -251,21 +275,20 @@ export const researchProjects: ResearchProject[] = [
 export const awards: Award[] = [
     {
         slug: 'winner-best-poster',
-        title: 'Winner and Best Poster Presentation Award',
-        organization: 'International Conference on Mechanical, Industrial and Energy Engineering',
-        date: '2020',
-        description: 'Awarded for research on "Real-Time Gas Pipeline Defect Detection using Computer Vision".',
-        longDescription: 'This award recognized the project for its innovative approach, significant potential impact, and the clarity and quality of its presentation. The poster session involved competing against dozens of graduate and undergraduate research projects from around the world.',
+        title: 'Winner and Best Poster Presentation Award for Outstanding Research',
+        organization: 'KUET Leather Engineering Seminar Series 2023',
+        date: 'September 2023',
+        description: 'Awarded for research on "Biodegradable Solid Waste (Orange Peel) Preserved Goat Skin in the Production of Fire Resistance Automobile Seat Leather".',
+        longDescription: 'As Team Leader, I led our team to win the top prize for our innovative research. This award recognized the project for its significant potential impact and the clarity and quality of its presentation.',
         image: 'https://i.imgur.com/NZ4Z7zt.png',
         images: ['https://picsum.photos/seed/award1-detail1/800/600', 'https://picsum.photos/seed/award1-detail2/800/600'],
-        videoUrl: 'https://www.youtube.com/embed/ScMzIvxBSi4',
     },
     {
         slug: 'first-runners-up-olympiad',
-        title: 'First Runners Up, Red & White Innovation Olympiad',
-        organization: 'Red & White Group',
-        date: '2021',
-        description: 'Secured second place in a national innovation competition for a sustainable technology idea.',
+        title: 'First Runners Up, Red & White Innovation Olympiad 1.0',
+        organization: 'Red & White Innovations (National Level Competition)',
+        date: 'January 2021',
+        description: 'Secured second place for a Health Based Case Study Competition focused on brainstorming and researching for new ideas.',
         longDescription: 'Our team developed a concept for a low-cost, biodegradable material from industrial waste. The project was judged on its feasibility, market potential, and environmental impact. We presented a detailed business plan and a prototype to a panel of industry experts.',
         image: 'https://picsum.photos/seed/award2/400/200',
         images: ['https://picsum.photos/seed/award2-detail1/800/600'],
@@ -273,9 +296,9 @@ export const awards: Award[] = [
     {
         slug: 'second-runners-up-redesign',
         title: 'Second Runners Up, Redesign 2020',
-        organization: 'Innovation Hub',
-        date: '2020',
-        description: 'Achieved third place in a product redesign competition.',
+        organization: 'IIT, University of Dhaka (National Level Competition)',
+        date: 'December 2020',
+        description: 'Achieved third place in an IT-based Case Study Competition focused on creative solutions for project management software.',
         longDescription: 'The challenge was to redesign a common household item to be more sustainable and user-friendly. Our team redesigned a water purifier to use less plastic, incorporate recyclable filters, and feature a smart monitoring system.',
         image: 'https://picsum.photos/seed/award3/400/200',
         images: ['https://picsum.photos/seed/award3-detail1/800/600', 'https://picsum.photos/seed/award3-detail2/800/600'],
@@ -283,19 +306,19 @@ export const awards: Award[] = [
     {
         slug: 'biz-bash-case-study',
         title: '6th Position, Biz Bash Case Study',
-        organization: 'Business Challenge Forum',
-        date: '2019',
-        description: 'Placed in the top 10 in a national business case study competition.',
-        longDescription: 'Analyzed a complex business case for a struggling tech company and presented a strategic turnaround plan. The solution focused on market repositioning, product diversification, and operational efficiency improvements.',
+        organization: 'KUET Career Club, Khulna, Bangladesh',
+        date: 'May 2020',
+        description: 'Placed 6th in a business case study competition to research and identify a new location for a new business.',
+        longDescription: 'Analyzed a complex business case and presented a strategic plan. The solution focused on market repositioning, product diversification, and operational efficiency improvements.',
         image: 'https://i.imgur.com/f3YBqjQ.png',
     },
     {
         slug: 'technical-scholarship',
-        title: 'Technical Scholarship, KUET',
+        title: 'Technical Scholarship',
         organization: 'Khulna University of Engineering & Technology',
-        date: '2017-2021',
-        description: 'Awarded a scholarship for academic excellence throughout my undergraduate studies.',
-        longDescription: 'This merit-based scholarship was awarded each year based on maintaining a high GPA and academic standing within the Computer Science and Engineering department.',
+        date: '2019-2024',
+        description: 'Awarded a scholarship for 4 consecutive years for academic excellence.',
+        longDescription: 'This merit-based scholarship was awarded each year based on maintaining a high GPA and academic standing within the department.',
         image: 'https://picsum.photos/seed/award5/400/200',
     },
 ];
@@ -303,21 +326,35 @@ export const awards: Award[] = [
 export const publications: Publication[] = [
     {
         type: 'Journal',
-        title: 'Atypical co-composting technique for degrading tannery solid waste enriched with recalcitrant particles, high-fat, and chromium',
-        details: 'Journal of Environmental Management, Volume 309, 2022',
-        link: '#'
+        title: 'Atypical co-composting technique of managing tannery limed fleshing',
+        details: 'Hashem, M. A., Paul, H., Akash, M. S. R., Mim, S., & Zahin, M. E. H. (2024). Waste Management Bulletin, 1(4), 23-29.',
+        link: 'https://doi.org/10.1016/j.wmb.2023.08.003'
     },
     {
         type: 'Conference',
-        title: 'Real-Time Gas Pipeline Defect Detection using Computer Vision',
-        details: 'Proceedings of the International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE), 2020',
-        link: '#'
+        title: 'Laboratory scale brick production from leather buffing dust to manage solid waste in tannery',
+        details: 'Hashem, M. A., Ahmed, T., Fuad, M. M., & Akash, M. S. R. (2023). WasteSafe 2023, Khulna, Bangladesh, February 25-26.',
+    },
+    {
+        type: 'Conference',
+        title: 'Adsorption of chromium from tannery wastewater on russet potato peel charcoal',
+        details: 'Paul, S., Milu, M. S., Hashem, M. A., & Akash, M. S. R. (2021). ICSTB-2021, Dhaka, Bangladesh, March 11-13.',
+    },
+    {
+        type: 'Poster Presentation',
+        title: 'Designed air-technology-based autofitting footwear with eco-friendly composite sole',
+        details: 'Akash, M.S.R., et al. (2023). Presented at 4th Annual Seminar on Leather Sector, KUET.',
+    },
+    {
+        type: 'Poster Presentation',
+        title: 'Developed fire-resistant automobile seat leather using biodegradable orange peel-preserved goat skin',
+        details: 'Akash, M.S.R., et al. (2023). Presented at 4th Annual Seminar on Leather Sector, KUET.',
     }
 ];
 
 export const youtubeChannel = {
   name: "ParallelX Academia",
-  description: "Your gateway to mastering complex subjects in engineering, technology, and science. We provide high-quality, in-depth tutorials and lectures to help students and enthusiasts alike. Join us on a journey of discovery and learning.",
+  description: "An online organization that focuses on the promotion of knowledge particularly on STEM; Acted as a teacher to teach mathematics, programming and Science. Created an opportunity for others to share their knowledge with the world.",
   featuredVideoUrl: "https://www.youtube-nocookie.com/embed/K8s1DzGeDj0",
   featuredVideoThumbnail: "https://i.ytimg.com/vi/K8s1DzGeDj0/hqdefault.jpg"
 };

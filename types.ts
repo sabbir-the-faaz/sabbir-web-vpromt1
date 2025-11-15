@@ -26,7 +26,7 @@ export interface BlogPost {
 }
 
 export interface ResearchProject {
-  slug: string;
+  slug:string;
   title: string;
   institution: string;
   duration: string;
@@ -51,7 +51,7 @@ export interface Award {
 }
 
 export interface TimelineEvent {
-  type: 'Career' | 'Teaching' | 'Leadership';
+  type: 'Career' | 'Teaching' | 'Leadership' | 'Research';
   icon: LucideIcon;
   title: string;
   subtitle: string;
@@ -75,7 +75,7 @@ export interface Skill {
 }
 
 export interface Publication {
-  type: 'Journal' | 'Conference';
+  type: 'Journal' | 'Conference' | 'Poster Presentation';
   title: string;
   details: string;
   link?: string;

@@ -1,12 +1,12 @@
-
 import React from 'react';
-import { Github, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { Github, Linkedin, BrainCircuit, Youtube } from 'lucide-react';
 import { personalInfo } from '../constants';
 
 const socialLinks = [
   { icon: Github, href: personalInfo.socials.github, name: 'GitHub' },
   { icon: Linkedin, href: personalInfo.socials.linkedin, name: 'LinkedIn' },
-  { icon: Twitter, href: personalInfo.socials.twitter, name: 'Twitter' },
+  // FIX: Property 'twitter' does not exist on type 'personalInfo.socials'. Replaced with 'researchGate'.
+  { icon: BrainCircuit, href: personalInfo.socials.researchGate, name: 'ResearchGate' },
   { icon: Youtube, href: personalInfo.socials.youtube, name: 'YouTube' },
 ];
 
