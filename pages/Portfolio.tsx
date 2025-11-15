@@ -1,23 +1,9 @@
-
 import React, { useState, useMemo } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { projects } from '../constants';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import type { Project } from '../types';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+import { containerVariants } from '../utils/animations';
+import ProjectCard from '../components/ProjectCard';
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -61,6 +47,7 @@ const Portfolio: React.FC = () => {
         {/* Projects Grid */}
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          key={activeCategory} // Add key to re-trigger animation on filter change
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -73,24 +60,5 @@ const Portfolio: React.FC = () => {
     </AnimatedPage>
   );
 };
-
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
-  <motion.div variants={itemVariants} className="bg-surface rounded-lg overflow-hidden shadow-lg group">
-    <Link to={`/portfolio/${project.slug}`}>
-      <div className="overflow-hidden">
-        <img 
-            src={project.thumbnail} 
-            alt={project.title} 
-            className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm text-primary font-semibold mb-1">{project.category}</p>
-        <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">{project.title}</h3>
-        <p className="text-text-secondary text-sm">{project.description}</p>
-      </div>
-    </Link>
-  </motion.div>
-);
 
 export default Portfolio;

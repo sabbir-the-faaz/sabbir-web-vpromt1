@@ -1,34 +1,17 @@
-
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { motion } from 'framer-motion';
 import { personalInfo, projects, awards, blogPosts, youtubeChannel } from '../constants';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { containerVariants } from '../utils/animations';
+
+// Import reusable card components
+import ProjectCard from '../components/ProjectCard';
+import AwardCard from '../components/AwardCard';
+import BlogPostCard from '../components/BlogPostCard';
 
 const Home: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-      },
-    },
-  };
-  
   const featuredProjects = projects.slice(0, 2);
   const featuredAwards = awards.slice(0, 3);
   const featuredBlogPosts = blogPosts.slice(0, 2);
@@ -81,51 +64,55 @@ const Home: React.FC = () => {
             </Link>
           </motion.div>
         </div>
+         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+            <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, repeatType: 'loop' }}
+            >
+                <ChevronDown size={48} className="text-white/50" />
+            </motion.div>
+        </div>
       </section>
 
       {/* Sections Wrapper */}
       <div className="bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
           
           {/* Featured Projects */}
           <section>
-            <h2 className="text-4xl font-display font-bold mb-8 text-center">Featured Projects</h2>
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Featured Projects</h2>
             <motion.div 
               className="grid md:grid-cols-2 gap-8"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               {featuredProjects.map(project => (
-                <motion.div key={project.slug} variants={itemVariants}>
-                  <ProjectCard project={project} />
-                </motion.div>
+                <ProjectCard key={project.slug} project={project} />
               ))}
             </motion.div>
-            <div className="text-center mt-8">
-                <Link to="/portfolio" className="text-primary hover:underline">View all projects</Link>
+            <div className="text-center mt-12">
+                <Link to="/portfolio" className="text-primary hover:underline text-lg">View all projects &rarr;</Link>
             </div>
           </section>
 
           {/* Featured Awards */}
           <section>
-            <h2 className="text-4xl font-display font-bold mb-8 text-center">Recent Awards</h2>
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Recent Awards</h2>
              <motion.div 
                 className="grid md:grid-cols-3 gap-8"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
             >
               {featuredAwards.map(award => (
-                <motion.div key={award.slug} variants={itemVariants}>
-                  <AwardCard award={award} />
-                </motion.div>
+                <AwardCard key={award.slug} award={award} />
               ))}
             </motion.div>
-            <div className="text-center mt-8">
-                <Link to="/awards" className="text-primary hover:underline">View all awards</Link>
+            <div className="text-center mt-12">
+                <Link to="/awards" className="text-primary hover:underline text-lg">View all awards &rarr;</Link>
             </div>
           </section>
           
@@ -134,7 +121,7 @@ const Home: React.FC = () => {
              <h2 className="text-4xl font-display font-bold mb-8 text-center">{youtubeChannel.name}</h2>
              <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
-                    <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                    <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
                         <iframe 
                             src={youtubeChannel.featuredVideoUrl} 
                             title="YouTube video player" 
@@ -146,32 +133,37 @@ const Home: React.FC = () => {
                     </div>
                 </div>
                 <div className="md:w-1/2">
-                    <p className="text-text-secondary mb-4">{youtubeChannel.description}</p>
-                    <a href={personalInfo.socials.youtube} target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white font-bold py-2 px-6 rounded-full hover:bg-red-700 transition-all duration-300 inline-flex items-center">
+                    <p className="text-text-secondary mb-6">{youtubeChannel.description}</p>
+                    <motion.a 
+                        href={personalInfo.socials.youtube} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="bg-red-600 text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 inline-flex items-center"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Visit Channel <ArrowRight className="ml-2" />
-                    </a>
+                    </motion.a>
                 </div>
              </div>
           </section>
 
           {/* Featured Blog Posts */}
           <section>
-            <h2 className="text-4xl font-display font-bold mb-8 text-center">Latest from the Blog</h2>
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Latest from the Blog</h2>
             <motion.div 
                 className="grid md:grid-cols-2 gap-8"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
             >
               {featuredBlogPosts.map(post => (
-                <motion.div key={post.slug} variants={itemVariants}>
-                  <BlogPostCard post={post} />
-                </motion.div>
+                <BlogPostCard key={post.slug} post={post} />
               ))}
             </motion.div>
-             <div className="text-center mt-8">
-                <Link to="/blog" className="text-primary hover:underline">Read all posts</Link>
+             <div className="text-center mt-12">
+                <Link to="/blog" className="text-primary hover:underline text-lg">Read all posts &rarr;</Link>
             </div>
           </section>
         </div>
@@ -179,36 +171,5 @@ const Home: React.FC = () => {
     </AnimatedPage>
   );
 };
-
-// Sub-components for cards for better organization
-const ProjectCard = ({ project }: { project: any }) => (
-  <Link to={`/portfolio/${project.slug}`} className="block bg-background rounded-lg overflow-hidden group">
-    <img src={project.thumbnail} alt={project.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-    <div className="p-6">
-      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-      <p className="text-text-secondary text-sm">{project.description}</p>
-    </div>
-  </Link>
-);
-
-const AwardCard = ({ award }: { award: any }) => (
-  <Link to={`/awards/${award.slug}`} className="block bg-background rounded-lg p-6 text-center group hover:bg-primary/10 transition-colors">
-     <img src={award.image} alt={award.title} className="w-full h-32 object-contain mb-4" />
-    <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{award.title}</h3>
-    <p className="text-text-secondary text-sm">{award.organization}</p>
-  </Link>
-);
-
-const BlogPostCard = ({ post }: { post: any }) => (
-  <Link to={`/blog/${post.slug}`} className="block bg-background rounded-lg overflow-hidden group">
-    <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-    <div className="p-6">
-      <p className="text-sm text-text-secondary mb-2">{post.date} &bull; {post.category}</p>
-      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h3>
-      <p className="text-text-secondary text-sm">{post.excerpt}</p>
-    </div>
-  </Link>
-);
-
 
 export default Home;

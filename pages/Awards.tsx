@@ -1,23 +1,9 @@
-
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { awards } from '../constants';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import type { Award } from '../types';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+import { containerVariants } from '../utils/animations';
+import AwardCard from '../components/AwardCard';
 
 const Awards: React.FC = () => {
   return (
@@ -49,24 +35,5 @@ const Awards: React.FC = () => {
     </AnimatedPage>
   );
 };
-
-const AwardCard: React.FC<{ award: Award }> = ({ award }) => (
-  <motion.div variants={itemVariants} className="bg-background rounded-lg overflow-hidden shadow-lg group">
-    <Link to={`/awards/${award.slug}`}>
-      <div className="overflow-hidden">
-        <img 
-            src={award.image} 
-            alt={award.title} 
-            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm text-text-secondary font-semibold mb-1">{award.date}</p>
-        <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">{award.title}</h3>
-        <p className="text-text-secondary text-sm">{award.organization}</p>
-      </div>
-    </Link>
-  </motion.div>
-);
 
 export default Awards;

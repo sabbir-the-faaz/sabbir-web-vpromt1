@@ -1,24 +1,10 @@
-
 import React, { useState, useMemo } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { blogPosts } from '../constants';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import type { BlogPost } from '../types';
 import { Search } from 'lucide-react';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+import { containerVariants } from '../utils/animations';
+import BlogPostCard from '../components/BlogPostCard';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,6 +67,7 @@ const Blog: React.FC = () => {
           {/* Posts Grid */}
           <motion.div
             className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8"
+            key={activeCategory + searchTerm} // Re-trigger animation on filter/search change
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -98,24 +85,5 @@ const Blog: React.FC = () => {
     </AnimatedPage>
   );
 };
-
-const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
-  <motion.div variants={itemVariants} className="bg-background rounded-lg overflow-hidden shadow-lg group">
-    <Link to={`/blog/${post.slug}`}>
-      <div className="overflow-hidden">
-        <img 
-            src={post.featuredImage} 
-            alt={post.title} 
-            className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm text-text-secondary font-semibold mb-2">{post.date} &bull; {post.category}</p>
-        <h3 className="text-2xl font-bold mb-3 text-text-primary group-hover:text-primary transition-colors">{post.title}</h3>
-        <p className="text-text-secondary">{post.excerpt}</p>
-      </div>
-    </Link>
-  </motion.div>
-);
 
 export default Blog;

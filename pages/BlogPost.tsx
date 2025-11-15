@@ -1,25 +1,51 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-import { blogPosts, personalInfo } from '../constants';
+import { blogPosts } from '../constants';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// A simple markdown to HTML converter
-const parseMarkdown = (text: string) => {
-    // This is a very basic parser. For a real app, use a library like 'marked' or 'react-markdown'.
-    const html = text
-      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-6 mb-3">$1</h2>')
-      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-4 mb-2">$1</h3>')
-      .replace(/\*\*(.*)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code class="bg-surface px-1 rounded text-secondary">$1</code>')
-      .replace(/```python\n([\s\S]*?)```/g, '<pre class="bg-surface p-4 rounded-lg overflow-x-auto my-4"><code class="language-python">$1</code></pre>')
-      .replace(/\n/g, '<br />');
+// A more robust markdown-to-HTML converter
+const parseMarkdown = (markdown: string): { __html: string } => {
+    let html = `\n${markdown.trim()}\n`;
 
-    return { __html: html };
+    // Block elements
+    // Code blocks
+    html = html.replace(/\n```python\n([\s\S]*?)\n```\n/g, (match, code) => {
+        const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return `\n<pre><code>${escapedCode}</code></pre>\n`;
+    });
+
+    // Blockquotes
+    html = html.replace(/\n> (.*)/g, '\n<blockquote>$1</blockquote>');
+    
+    // Lists
+    html = html.replace(/((\n(\*|\d+\.) [^\n]+)+)/g, (match) => {
+        const listItems = match.trim().split('\n');
+        const isOrdered = /^\d+\./.test(listItems[0]);
+        const listTag = isOrdered ? 'ol' : 'ul';
+        const items = listItems.map(item => `<li>${item.replace(/^\s*(\*|\d+\.)\s/, '')}</li>`).join('');
+        return `\n<${listTag}>${items}</${listTag}>\n`;
+    });
+
+    // Headers
+    html = html.replace(/\n## (.*)/g, '\n<h2>$1</h2>');
+    html = html.replace(/\n### (.*)/g, '\n<h3>$1</h3>');
+
+    // Paragraphs
+    html = html.replace(/\n(?!<h|<p|<ul|<ol|<li|<blockquote|<pre)(.*)\n/g, '\n<p>$1</p>\n');
+    html = html.replace(/<br \/>/g, '</p><p>');
+
+
+    // Inline elements
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    return { __html: html.trim() };
 };
+
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams();
@@ -85,7 +111,7 @@ const BlogPost: React.FC = () => {
             />
             
             <motion.div 
-                className="prose prose-lg prose-invert max-w-none prose-p:text-text-secondary prose-headings:text-text-primary prose-strong:text-text-primary prose-a:text-primary hover:prose-a:text-secondary"
+                className="prose"
                 dangerouslySetInnerHTML={parseMarkdown(post.content)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

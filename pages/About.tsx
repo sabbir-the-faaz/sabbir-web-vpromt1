@@ -1,24 +1,10 @@
-
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { personalInfo, skills, timelineEvents, education, certifications, publications } from '../constants';
 import { motion } from 'framer-motion';
 import type { TimelineEvent, Education, Skill, Certification, Publication } from '../types';
-// Fix: import CheckCircle icon.
-import { Link, CheckCircle } from 'lucide-react';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+import { Link as LinkIcon, CheckCircle } from 'lucide-react';
+import { containerVariants, itemVariants } from '../utils/animations';
 
 const About: React.FC = () => {
   return (
@@ -76,7 +62,7 @@ const About: React.FC = () => {
         {/* Experience Timeline */}
         <section className="mb-20">
             <h2 className="text-4xl font-display font-bold text-center mb-12">Experience & Leadership</h2>
-            <div className="relative border-l-2 border-primary/30 ml-6 md:ml-0">
+            <div className="relative border-l-2 border-primary/30 ml-6 md:max-w-3xl md:mx-auto">
                 {timelineEvents.map((event, index) => <TimelineItem key={index} event={event} isLast={index === timelineEvents.length - 1} />)}
             </div>
         </section>
@@ -85,6 +71,7 @@ const About: React.FC = () => {
         <section className="mb-20">
             <h2 className="text-4xl font-display font-bold text-center mb-12">Education</h2>
             <motion.div
+                className="max-w-3xl mx-auto"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -95,7 +82,7 @@ const About: React.FC = () => {
         </section>
         
         {/* Certifications and Publications */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
                 <h3 className="text-3xl font-bold text-center mb-8">Certifications</h3>
                 <motion.ul 
@@ -127,7 +114,6 @@ const About: React.FC = () => {
   );
 };
 
-// Fix: Use React.FC to correctly type props and allow for React's special `key` prop.
 const SkillBar: React.FC<{ skill: Skill }> = ({ skill }) => (
     <motion.div variants={itemVariants}>
         <div className="flex justify-between mb-1">
@@ -140,13 +126,12 @@ const SkillBar: React.FC<{ skill: Skill }> = ({ skill }) => (
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 viewport={{ once: true }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
             />
         </div>
     </motion.div>
 );
 
-// Fix: Use React.FC to correctly type props and allow for React's special `key` prop.
 const TimelineItem: React.FC<{ event: TimelineEvent, isLast: boolean }> = ({ event, isLast }) => (
     <motion.div 
         className={`pl-12 relative ${!isLast ? 'pb-12' : ''}`}
@@ -166,7 +151,6 @@ const TimelineItem: React.FC<{ event: TimelineEvent, isLast: boolean }> = ({ eve
     </motion.div>
 );
 
-// Fix: Use React.FC to correctly type props and allow for React's special `key` prop.
 const EducationCard: React.FC<{ education: Education }> = ({ education }) => (
     <motion.div 
         className="bg-surface p-8 rounded-lg"
@@ -184,7 +168,6 @@ const EducationCard: React.FC<{ education: Education }> = ({ education }) => (
     </motion.div>
 );
 
-// Fix: Use React.FC to correctly type props and allow for React's special `key` prop.
 const CertificationItem: React.FC<{ certification: Certification }> = ({ certification }) => (
     <motion.li 
         className="bg-surface p-4 rounded-lg flex items-center gap-4"
@@ -198,7 +181,6 @@ const CertificationItem: React.FC<{ certification: Certification }> = ({ certifi
     </motion.li>
 );
 
-// Fix: Use React.FC to correctly type props and allow for React's special `key` prop.
 const PublicationItem: React.FC<{ publication: Publication }> = ({ publication }) => (
     <motion.li 
         className="bg-surface p-4 rounded-lg"
@@ -208,7 +190,7 @@ const PublicationItem: React.FC<{ publication: Publication }> = ({ publication }
         <p className="text-sm text-text-secondary">{publication.details}</p>
         {publication.link && (
             <a href={publication.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-flex items-center gap-1">
-                Read More <Link size={14}/>
+                Read More <LinkIcon size={14}/>
             </a>
         )}
     </motion.li>

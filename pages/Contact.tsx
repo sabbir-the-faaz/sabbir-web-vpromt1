@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -28,7 +27,7 @@ const Contact: React.FC = () => {
           <p className="text-xl text-text-secondary mt-2">I'd love to hear from you. Let's get in touch.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -38,21 +37,21 @@ const Contact: React.FC = () => {
             <h2 className="text-3xl font-bold mb-6">Direct Info</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <Mail className="text-primary mt-1" size={24} />
+                <Mail className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg">Email</h3>
-                  <a href={`mailto:${personalInfo.contact.email}`} className="text-text-secondary hover:text-primary">{personalInfo.contact.email}</a>
+                  <a href={`mailto:${personalInfo.contact.email}`} className="text-text-secondary hover:text-primary break-all">{personalInfo.contact.email}</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <Phone className="text-primary mt-1" size={24} />
+                <Phone className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg">Phone</h3>
                   <p className="text-text-secondary">{personalInfo.contact.phone}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <MapPin className="text-primary mt-1" size={24} />
+                <MapPin className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg">Location</h3>
                   <p className="text-text-secondary">{personalInfo.contact.address}</p>
@@ -82,9 +81,14 @@ const Contact: React.FC = () => {
                 <textarea id="message" name="message" rows={5} required className="mt-1 block w-full bg-surface border-transparent rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
               </div>
               <div>
-                <button type="submit" className="w-full bg-primary text-background font-bold py-3 px-4 rounded-lg hover:bg-secondary transition-all duration-300">
+                <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="submit" 
+                    className="w-full bg-primary text-background font-bold py-3 px-4 rounded-lg hover:bg-secondary transition-all duration-300"
+                >
                   Send Message
-                </button>
+                </motion.button>
               </div>
             </form>
           </motion.div>
