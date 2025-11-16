@@ -6,7 +6,7 @@ export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
 };
 
@@ -17,7 +17,8 @@ export const itemVariants: Variants = {
     opacity: 1,
     transition: {
       type: 'spring',
-      stiffness: 100,
+      stiffness: 300,
+      damping: 25,
     },
   },
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
-import { motion } from 'framer-motion';
+// FIX: Import 'Variants' type from framer-motion to correctly type animation variants.
+import { motion, Variants } from 'framer-motion';
 import { personalInfo, projects, awards, blogPosts, youtubeChannel, researchProjects } from '../constants';
 import { ArrowRight, ChevronDown, FileText, Presentation, Trophy, Users, Briefcase, Languages } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { containerVariants, itemVariants } from '../utils/animations';
+import { containerVariants } from '../utils/animations';
 
 // Import reusable card components
 import ProjectCard from '../components/ProjectCard';
@@ -12,6 +13,21 @@ import AwardCard from '../components/AwardCard';
 import BlogPostCard from '../components/BlogPostCard';
 import ResearchCard from '../components/ResearchCard';
 import AnimatedCounter from '../components/AnimatedCounter';
+
+// FIX: Explicitly type variants with the 'Variants' type from framer-motion.
+const dripItemVariants: Variants = {
+  hidden: { opacity: 0, y: -40, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 300,
+    },
+  },
+};
 
 const Home: React.FC = () => {
   const featuredProjects = projects.slice(0, 2);
@@ -87,8 +103,23 @@ const Home: React.FC = () => {
       </section>
 
       {/* Achievements by the Numbers */}
-      <section className="bg-background py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        className="py-20 relative overflow-hidden"
+      >
+        <div
+            className="absolute inset-0 z-0 bg-cover bg-center"
+            style={{
+                backgroundImage: "url('https://i.imgur.com/Th0OGFa.png')",
+            }}
+        />
+        <motion.div
+            className="absolute inset-0 z-10 bg-background/85"
+            initial={{ clipPath: 'circle(0% at 50% 10%)' }}
+            whileInView={{ clipPath: 'circle(150% at 50% 50%)' }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <h2 className="text-4xl font-display font-bold mb-12 text-center">Achievements by the Numbers</h2>
             <motion.div 
               className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center"
@@ -98,9 +129,9 @@ const Home: React.FC = () => {
               viewport={{ once: true, amount: 0.2 }}
             >
               {achievements.map((item, index) => (
-                <motion.div key={index} variants={itemVariants} className="flex flex-col items-center p-4">
-                    <item.icon className="text-primary mb-4" size={48} />
-                    <div className="text-5xl font-display font-bold text-primary">
+                <motion.div key={index} variants={dripItemVariants} className="flex flex-col items-center p-4">
+                    <item.icon className="text-secondary mb-4" size={48} />
+                    <div className="text-5xl font-display font-bold text-secondary">
                         <AnimatedCounter to={item.value} />
                         {item.suffix}
                     </div>

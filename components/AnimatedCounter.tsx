@@ -16,8 +16,8 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ from = 0, to }) => {
       if (!node) return;
 
       const controls = animate(from, to, {
-        duration: 2,
-        ease: "easeOut",
+        duration: 1.5,
+        ease: [0.2, 0.65, 0.3, 0.9],
         onUpdate(value) {
           node.textContent = Math.round(value).toString();
         }
