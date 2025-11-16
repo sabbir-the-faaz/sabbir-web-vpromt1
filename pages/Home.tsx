@@ -1,7 +1,7 @@
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { motion } from 'framer-motion';
-import { personalInfo, projects, awards, blogPosts, youtubeChannel } from '../constants';
+import { personalInfo, projects, awards, blogPosts, youtubeChannel, researchProjects } from '../constants';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { containerVariants } from '../utils/animations';
@@ -10,9 +10,11 @@ import { containerVariants } from '../utils/animations';
 import ProjectCard from '../components/ProjectCard';
 import AwardCard from '../components/AwardCard';
 import BlogPostCard from '../components/BlogPostCard';
+import ResearchCard from '../components/ResearchCard';
 
 const Home: React.FC = () => {
   const featuredProjects = projects.slice(0, 2);
+  const featuredResearch = researchProjects.slice(0, 2);
   const featuredAwards = awards.slice(0, 3);
   const featuredBlogPosts = blogPosts.slice(0, 2);
 
@@ -94,6 +96,25 @@ const Home: React.FC = () => {
             </motion.div>
             <div className="text-center mt-12">
                 <Link to="/portfolio" className="text-primary hover:underline text-lg">View all projects &rarr;</Link>
+            </div>
+          </section>
+
+          {/* Featured Research */}
+          <section>
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Featured Research</h2>
+            <motion.div 
+              className="grid md:grid-cols-2 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {featuredResearch.map(project => (
+                <ResearchCard key={project.slug} project={project} />
+              ))}
+            </motion.div>
+            <div className="text-center mt-12">
+                <Link to="/research" className="text-primary hover:underline text-lg">View all research &rarr;</Link>
             </div>
           </section>
 

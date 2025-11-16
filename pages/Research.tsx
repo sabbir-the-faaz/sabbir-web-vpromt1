@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { ResearchProject, Publication } from '../types';
 import { Link as LinkIcon } from 'lucide-react';
+import ResearchCard from '../components/ResearchCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -118,24 +119,5 @@ const Research: React.FC = () => {
     </AnimatedPage>
   );
 };
-
-const ResearchCard: React.FC<{ project: ResearchProject }> = ({ project }) => (
-  <motion.div variants={itemVariants} className="bg-surface rounded-lg overflow-hidden shadow-lg group">
-    <Link to={`/research/${project.slug}`}>
-      <div className="overflow-hidden">
-        <img 
-            src={project.image} 
-            alt={project.title} 
-            className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm text-text-secondary font-semibold mb-1">{project.institution}</p>
-        <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">{project.title}</h3>
-        <p className="text-text-secondary text-sm">{project.description}</p>
-      </div>
-    </Link>
-  </motion.div>
-);
 
 export default Research;
