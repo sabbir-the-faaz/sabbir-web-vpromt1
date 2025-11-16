@@ -2,21 +2,31 @@ import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { motion } from 'framer-motion';
 import { personalInfo, projects, awards, blogPosts, youtubeChannel, researchProjects } from '../constants';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, FileText, Presentation, Trophy, Users, Briefcase, Languages } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { containerVariants } from '../utils/animations';
+import { containerVariants, itemVariants } from '../utils/animations';
 
 // Import reusable card components
 import ProjectCard from '../components/ProjectCard';
 import AwardCard from '../components/AwardCard';
 import BlogPostCard from '../components/BlogPostCard';
 import ResearchCard from '../components/ResearchCard';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const Home: React.FC = () => {
   const featuredProjects = projects.slice(0, 2);
   const featuredResearch = researchProjects.slice(0, 2);
   const featuredAwards = awards.slice(0, 3);
   const featuredBlogPosts = blogPosts.slice(0, 2);
+
+  const achievements = [
+    { icon: FileText, value: 4, label: "Publications", suffix: "+" },
+    { icon: Presentation, value: 40, label: "Presentations", suffix: "+" },
+    { icon: Trophy, value: 5, label: "Competition Wins", suffix: "+" },
+    { icon: Users, value: 40, label: "Team Members Led", suffix: "+" },
+    { icon: Briefcase, value: 3, label: "Business Case Wins", suffix: "+" },
+    { icon: Languages, value: 7, label: "IELTS Band", suffix: "" },
+  ];
 
   return (
     <AnimatedPage>
@@ -72,6 +82,31 @@ const Home: React.FC = () => {
                 transition={{ duration: 1.5, repeat: Infinity, repeatType: 'loop' }}
             >
                 <ChevronDown size={48} className="text-white/50" />
+            </motion.div>
+        </div>
+      </section>
+
+      {/* Achievements by the Numbers */}
+      <section className="bg-background py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Achievements by the Numbers</h2>
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {achievements.map((item, index) => (
+                <motion.div key={index} variants={itemVariants} className="flex flex-col items-center p-4">
+                    <item.icon className="text-primary mb-4" size={48} />
+                    <div className="text-5xl font-display font-bold text-primary">
+                        <AnimatedCounter to={item.value} />
+                        {item.suffix}
+                    </div>
+                    <p className="text-text-secondary mt-2 text-lg">{item.label}</p>
+                </motion.div>
+              ))}
             </motion.div>
         </div>
       </section>
