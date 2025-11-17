@@ -5,15 +5,6 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '../constants';
 
 const Contact: React.FC = () => {
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // In a real MERN app, this would send a POST request to the backend.
-    // For this static version, we just show an alert.
-    alert("Thank you for your message! This is a demo form.");
-    (e.target as HTMLFormElement).reset();
-  };
-
   return (
     <AnimatedPage>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -67,7 +58,15 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl font-bold mb-6">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {/* 
+              This form now submits to Formspree.
+              IMPORTANT: Replace "YOUR_FORM_ID" with your actual Formspree form ID.
+            */}
+            <form 
+              action="https://formspree.io/f/YOUR_FORM_ID" 
+              method="POST" 
+              className="space-y-4"
+            >
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Name</label>
                 <input type="text" id="name" name="name" required className="mt-1 block w-full bg-surface border-transparent rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary" />

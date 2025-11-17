@@ -14,6 +14,7 @@ import AwardDetail from './pages/AwardDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import StudentCorner from './pages/StudentCorner';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function Main() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/student-corner" element={<StudentCorner />} />
         </Routes>
       </AnimatePresence>
     </Layout>

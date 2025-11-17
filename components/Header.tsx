@@ -11,6 +11,7 @@ const navLinks = [
   { path: '/research', label: 'Research' },
   { path: '/awards', label: 'Awards' },
   { path: '/blog', label: 'Blog' },
+  { path: '/student-corner', label: 'Student Corner' },
   { path: '/contact', label: 'Contact' },
 ];
 
