@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { personalInfo } from '../constants';
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -40,8 +41,15 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="text-2xl font-display font-bold text-primary">
-            S. R. Akash
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src={personalInfo.profilePicture} 
+              alt="S. R. Akash Logo" 
+              className="h-10 w-10 rounded-full border-2 border-primary/50 object-cover"
+            />
+            <span className="text-xl font-display font-bold text-primary">
+              S. R. Akash
+            </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (

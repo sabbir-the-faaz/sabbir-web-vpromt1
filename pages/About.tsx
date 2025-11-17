@@ -6,7 +6,53 @@ import type { TimelineEvent, Education, Skill, Certification, Publication } from
 import { Link as LinkIcon, CheckCircle, BrainCircuit } from 'lucide-react';
 import { containerVariants, itemVariants } from '../utils/animations';
 
+const getYear = (dateString: string): number => {
+    if (!dateString) return 0;
+    const yearMatch = dateString.match(/\d{4}/);
+    return yearMatch ? parseInt(yearMatch[0], 10) : 0;
+};
+
+const getSortableDate = (duration: string): { end: number, start: number } => {
+    const parts = duration.split(' - ');
+    const startPart = parts[0];
+    const endPart = parts.length > 1 ? parts[1] : startPart;
+
+    let endYear;
+    if (endPart.toLowerCase().includes('continuing') || endPart.toLowerCase().includes('present')) {
+        endYear = new Date().getFullYear() + 1; // Future year to always be on top
+    } else {
+        endYear = getYear(endPart);
+    }
+    
+    const startYear = getYear(startPart);
+
+    return { end: endYear, start: startYear };
+};
+
+
 const About: React.FC = () => {
+  const professionalEvents = timelineEvents
+    .filter(event => event.type === 'Career' || event.type === 'Teaching' || event.type === 'Research')
+    .sort((a, b) => {
+        const dateA = getSortableDate(a.duration);
+        const dateB = getSortableDate(b.duration);
+        if (dateB.end !== dateA.end) {
+            return dateB.end - dateA.end;
+        }
+        return dateB.start - dateA.start;
+    });
+
+  const leadershipEvents = timelineEvents
+    .filter(event => event.type === 'Leadership')
+    .sort((a, b) => {
+        const dateA = getSortableDate(a.duration);
+        const dateB = getSortableDate(b.duration);
+        if (dateB.end !== dateA.end) {
+            return dateB.end - dateA.end;
+        }
+        return dateB.start - dateA.start;
+    });
+  
   return (
     <AnimatedPage>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -59,11 +105,19 @@ const About: React.FC = () => {
             </motion.div>
         </section>
         
-        {/* Experience Timeline */}
+        {/* Professional Experience Timeline */}
         <section className="mb-20">
-            <h2 className="text-4xl font-display font-bold text-center mb-12">Experience & Leadership</h2>
+            <h2 className="text-4xl font-display font-bold text-center mb-12">Professional Experience</h2>
             <div className="relative border-l-2 border-primary/30 ml-6 md:max-w-3xl md:mx-auto">
-                {timelineEvents.map((event, index) => <TimelineItem key={index} event={event} isLast={index === timelineEvents.length - 1} />)}
+                {professionalEvents.map((event, index) => <TimelineItem key={index} event={event} isLast={index === professionalEvents.length - 1} />)}
+            </div>
+        </section>
+        
+        {/* Club & Leadership Experience */}
+        <section className="mb-20">
+            <h2 className="text-4xl font-display font-bold text-center mb-12">Club & Leadership Experience</h2>
+            <div className="relative border-l-2 border-primary/30 ml-6 md:max-w-3xl md:mx-auto">
+                {leadershipEvents.map((event, index) => <TimelineItem key={index} event={event} isLast={index === leadershipEvents.length - 1} />)}
             </div>
         </section>
         

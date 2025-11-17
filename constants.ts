@@ -1,4 +1,3 @@
-
 import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification } from './types';
 import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit } from 'lucide-react';
 
@@ -65,15 +64,6 @@ export const timelineEvents: TimelineEvent[] = [
     description: 'Conducted thesis on "Development of an Automated Grading System for Finished Leather" using Detectron2 and YOLOv8. Also contributed to multiple international journal and conference publications on sustainable engineering solutions.'
   },
   {
-    type: 'Leadership',
-    icon: Users,
-    title: 'Founder & President',
-    subtitle: 'Neuronite, KUET',
-    duration: 'May 2023 - March 2024',
-    description: 'Established and led a 40-member executive team, impacting thousands. Led 9 programs in 1 year, focusing on AI, Machine Learning, and leadership skills. Also focused on social welfare activities.',
-    image: 'https://i.imgur.com/wYKiVUA.png'
-  },
-  {
     type: 'Teaching',
     icon: BookOpen,
     title: 'Founder & Teacher',
@@ -81,6 +71,47 @@ export const timelineEvents: TimelineEvent[] = [
     duration: 'May 2020 - Present',
     description: 'Founded an online STEM-focused organization. Taught mathematics, programming, and science, creating opportunities for others to share their knowledge.'
   },
+  {
+    type: 'Leadership',
+    icon: Users,
+    title: 'Founder & President',
+    subtitle: 'Neuronite, KUET, Khulna, Bangladesh',
+    duration: 'May 2023 - March 2024',
+    description: 'Established a club, and led a 40-member executive team, impacting the lives of thousands. Led 9 programs in 1 year focusing on AI, Machine Learning, and leadership. Also organized social welfare activities.',
+    image: 'https://i.imgur.com/wYKiVUA.png'
+  },
+  {
+    type: 'Leadership',
+    icon: Users,
+    title: 'Senior Executives of IT & Resources',
+    subtitle: 'KUET Career Club, Khulna, Bangladesh',
+    duration: 'March 2022 - March 2023',
+    description: 'Hosted & organized 4 career-oriented podcasts impacting thousands. Organized 13 programs in 1 year, leading the junior executive panel for IT & Resources.'
+  },
+  {
+    type: 'Leadership',
+    icon: Users,
+    title: 'Junior Executives of IT & Resources',
+    subtitle: 'KUET Career Club, Khulna, Bangladesh',
+    duration: 'February 2020 - March 2022',
+    description: 'Supported club programs through execution, creative design, and video editing, while adhering to senior leadership guidance.'
+  },
+  {
+    type: 'Leadership',
+    icon: Users,
+    title: 'Assistant Training Officer',
+    subtitle: 'Prism, KUET, Khulna, Bangladesh',
+    duration: 'April 2022- March 2023',
+    description: 'Developed questions for evaluation tests of different workshops related to data analysis, Excel, etc. Monitored the quality of classes and class materials.'
+  },
+  {
+    type: 'Leadership',
+    icon: Users,
+    title: 'IT & Content Creation Officer',
+    subtitle: 'KUET Robotics & IoT Club, Khulna, Bangladesh',
+    duration: 'March 2022 - 2024',
+    description: 'Used Photoshop, Premier Pro, Illustrator, Canva, etc. in order to create different content. Provided technical support during workshops and events.'
+  }
 ];
 
 export const education: Education[] = [
