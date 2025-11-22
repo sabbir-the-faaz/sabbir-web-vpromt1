@@ -1,9 +1,10 @@
+
 import React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
-import { personalInfo, skills, timelineEvents, education, certifications, publications } from '../constants';
+import { personalInfo, technicalSkills, professionalSkills, timelineEvents, education, certifications, publications } from '../constants';
 import { motion } from 'framer-motion';
 import type { TimelineEvent, Education, Skill, Certification, Publication } from '../types';
-import { Link as LinkIcon, CheckCircle, BrainCircuit } from 'lucide-react';
+import { Link as LinkIcon, CheckCircle, Code, Users } from 'lucide-react';
 import { containerVariants, itemVariants } from '../utils/animations';
 
 const getYear = (dateString: string): number => {
@@ -55,19 +56,17 @@ const About: React.FC = () => {
   
   return (
     <AnimatedPage>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-5xl font-display font-bold text-primary mb-4">About Me</h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            A glimpse into my professional journey, skills, and background.
-          </p>
-        </motion.div>
+       {/* Banner */}
+      <div className="h-64 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('https://i.imgur.com/du9IEPR.jpeg')" }}>
+        <div className="bg-black/60 w-full h-full flex flex-col items-center justify-center text-center px-4">
+            <h1 className="text-5xl font-display font-bold text-white">About Me</h1>
+            <p className="text-xl text-text-secondary mt-2 max-w-3xl">
+              A glimpse into my professional journey, skills, and background.
+            </p>
+        </div>
+      </div>
 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Bio Section */}
         <section className="flex flex-col md:flex-row items-center gap-12 mb-20">
           <motion.img 
@@ -87,22 +86,72 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl font-bold mb-4">Professional Summary</h2>
-            <p className="text-text-secondary leading-relaxed">{personalInfo.bio}</p>
+            <p className="text-text-secondary leading-relaxed text-lg">{personalInfo.bio}</p>
           </motion.div>
         </section>
 
         {/* Skills Section */}
         <section className="mb-20">
             <h2 className="text-4xl font-display font-bold text-center mb-12">My Skill Set</h2>
-            <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-            >
-                {skills.map(skill => <SkillBar key={skill.name} skill={skill} />)}
-            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* Technical Skills */}
+                <div>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-primary">
+                        <Code className="text-primary" size={28} /> Technical Expertise
+                    </h3>
+                    <motion.div 
+                        className="space-y-6"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {technicalSkills.map(skill => (
+                            <SkillBar key={skill.name} skill={skill} colorClass="bg-primary" textClass="text-primary" />
+                        ))}
+                    </motion.div>
+                </div>
+
+                {/* Professional Skills */}
+                <div>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-secondary">
+                         <Users className="text-secondary" size={28} /> Professional & Soft Skills
+                    </h3>
+                    <motion.div 
+                        className="grid grid-cols-1 gap-4"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {professionalSkills.map(skill => (
+                             <motion.div 
+                                key={skill.name}
+                                variants={itemVariants} 
+                                className="bg-surface border border-secondary/20 p-4 rounded-xl flex items-center gap-4 hover:border-secondary transition-all duration-300 shadow-md hover:shadow-lg group"
+                                whileHover={{ scale: 1.02 }}
+                             >
+                                {skill.icon ? (
+                                    <div className="p-3 bg-secondary/10 rounded-full text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
+                                        <skill.icon size={20} />
+                                    </div>
+                                ) : (
+                                    <div className="p-3 bg-secondary/10 rounded-full text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
+                                         <CheckCircle size={20} />
+                                    </div>
+                                )}
+                                <div>
+                                    <h4 className="font-bold text-text-primary text-base sm:text-lg">{skill.name}</h4>
+                                    <div className="w-full bg-background/50 rounded-full h-1 mt-2 w-24">
+                                        <div className="bg-secondary h-1 rounded-full" style={{ width: `${skill.level}%` }}></div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
         </section>
         
         {/* Professional Experience Timeline */}
@@ -168,15 +217,21 @@ const About: React.FC = () => {
   );
 };
 
-const SkillBar: React.FC<{ skill: Skill }> = ({ skill }) => (
+interface SkillBarProps {
+    skill: Skill;
+    colorClass?: string;
+    textClass?: string;
+}
+
+const SkillBar: React.FC<SkillBarProps> = ({ skill, colorClass = "bg-primary", textClass = "text-primary" }) => (
     <motion.div variants={itemVariants}>
         <div className="flex justify-between mb-1">
             <span className="text-base font-medium text-text-primary">{skill.name}</span>
-            <span className="text-sm font-medium text-primary">{skill.level}%</span>
+            <span className={`text-sm font-medium ${textClass}`}>{skill.level}%</span>
         </div>
-        <div className="w-full bg-background rounded-full h-2.5">
+        <div className="w-full bg-surface/50 rounded-full h-2.5 border border-white/5">
             <motion.div 
-                className="bg-primary h-2.5 rounded-full" 
+                className={`h-2.5 rounded-full ${colorClass}`} 
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 viewport={{ once: true }}

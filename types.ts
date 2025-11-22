@@ -72,6 +72,7 @@ export interface Education {
 export interface Skill {
   name: string;
   level: number; // Percentage from 0 to 100
+  icon?: LucideIcon;
 }
 
 export interface Publication {

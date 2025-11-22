@@ -1,11 +1,12 @@
+
 import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification } from './types';
-import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit } from 'lucide-react';
+import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers } from 'lucide-react';
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
   title: "Engineer | Researcher | Business Development Strategist",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
-  bio: "Passionate about driving global change through innovation, seeking a Ph.D. in Computer Engineering to advance computer vision and sustainable technology through research and industry experience. Proven communicator with experience delivering international conference presentations and teaching over 500 students.",
+  bio: "I am a results-driven Engineer & Researcher with a unique blend of technical expertise in Computer Vision (AI) and strategic business acumen. My journey spans from developing cutting-edge algorithms for industrial automation to leading business development and merchandising strategies for global brands. Whether conducting advanced research, managing cross-functional teams, or optimizing complex systems, I bring a commitment to innovation and sustainability. I am currently seeking opportunities to leverage my diverse skill set in a Ph.D. program or dynamic industry role.",
   contact: {
     email: "sabbir4research@gmail.com",
     phone: "+880 133 26 53 669",
@@ -19,7 +20,7 @@ export const personalInfo = {
   },
 };
 
-export const skills: Skill[] = [
+export const technicalSkills: Skill[] = [
   { name: 'Computer Vision (YOLOv8, Detectron2)', level: 90 },
   { name: 'Python (PyTorch, OpenCV)', level: 95 },
   { name: 'NVIDIA Jetson Nano', level: 85 },
@@ -28,6 +29,17 @@ export const skills: Skill[] = [
   { name: 'SQL & Database Design', level: 75 },
   { name: 'System Design & Implementation', level: 80 },
   { name: 'React / Web Development', level: 70 },
+];
+
+export const professionalSkills: Skill[] = [
+  { name: 'Strategic Leadership & Team Management', level: 95, icon: Users },
+  { name: 'Business Communication & Negotiation', level: 90, icon: MessageSquare },
+  { name: 'Business Development & Strategy', level: 85, icon: TrendingUp },
+  { name: 'Merchandising & Product Lifecycle', level: 80, icon: ShoppingBag },
+  { name: 'Data Analytics (Excel / Google Sheets)', level: 90, icon: BarChart3 },
+  { name: 'Public Speaking & Mentorship', level: 95, icon: Mic },
+  { name: 'Research Methodology & Technical Writing', level: 90, icon: FileText },
+  { name: 'Cross-Functional Collaboration', level: 85, icon: Layers },
 ];
 
 export const timelineEvents: TimelineEvent[] = [
