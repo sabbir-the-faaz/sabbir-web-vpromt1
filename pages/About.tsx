@@ -4,7 +4,7 @@ import AnimatedPage from '../components/AnimatedPage';
 import { personalInfo, technicalSkills, professionalSkills, timelineEvents, education, certifications, publications } from '../constants';
 import { motion } from 'framer-motion';
 import type { TimelineEvent, Education, Skill, Certification, Publication } from '../types';
-import { Link as LinkIcon, CheckCircle, Code, Users } from 'lucide-react';
+import { Link as LinkIcon, CheckCircle, Code, Users, Star } from 'lucide-react';
 import { containerVariants, itemVariants } from '../utils/animations';
 
 const getYear = (dateString: string): number => {
@@ -57,8 +57,9 @@ const About: React.FC = () => {
   return (
     <AnimatedPage>
        {/* Banner */}
-      <div className="h-64 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('https://i.imgur.com/du9IEPR.jpeg')" }}>
-        <div className="bg-black/60 w-full h-full flex flex-col items-center justify-center text-center px-4">
+      <div className="h-64 bg-cover bg-center flex items-center justify-center relative" style={{ backgroundImage: "url('https://i.imgur.com/du9IEPR.jpeg')" }}>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-5xl font-display font-bold text-white">About Me</h1>
             <p className="text-xl text-text-secondary mt-2 max-w-3xl">
               A glimpse into my professional journey, skills, and background.
@@ -92,12 +93,15 @@ const About: React.FC = () => {
 
         {/* Skills Section */}
         <section className="mb-20">
-            <h2 className="text-4xl font-display font-bold text-center mb-12">My Skill Set</h2>
+            <div className="text-center mb-12">
+                <h2 className="text-4xl font-display font-bold mb-4">My Skill Set</h2>
+                <p className="text-text-secondary max-w-2xl mx-auto">Combining technical precision in Engineering & AI with strategic expertise in Business Development & Leadership.</p>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Technical Skills */}
-                <div>
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-primary">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Technical Skills - Progress Bars */}
+                <div className="bg-surface p-8 rounded-2xl border border-white/5">
+                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-primary">
                         <Code className="text-primary" size={28} /> Technical Expertise
                     </h3>
                     <motion.div 
@@ -113,13 +117,13 @@ const About: React.FC = () => {
                     </motion.div>
                 </div>
 
-                {/* Professional Skills */}
+                {/* Professional Skills - Grid Cards */}
                 <div>
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-secondary">
-                         <Users className="text-secondary" size={28} /> Professional & Soft Skills
+                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-secondary ml-2">
+                         <Star className="text-secondary" size={28} /> Professional & Soft Skills
                     </h3>
                     <motion.div 
-                        className="grid grid-cols-1 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -129,23 +133,24 @@ const About: React.FC = () => {
                              <motion.div 
                                 key={skill.name}
                                 variants={itemVariants} 
-                                className="bg-surface border border-secondary/20 p-4 rounded-xl flex items-center gap-4 hover:border-secondary transition-all duration-300 shadow-md hover:shadow-lg group"
-                                whileHover={{ scale: 1.02 }}
+                                className="bg-surface border border-secondary/10 p-6 rounded-xl flex flex-col gap-3 hover:border-secondary/50 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-secondary/10 group"
+                                whileHover={{ y: -5 }}
                              >
-                                {skill.icon ? (
-                                    <div className="p-3 bg-secondary/10 rounded-full text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
-                                        <skill.icon size={20} />
-                                    </div>
-                                ) : (
-                                    <div className="p-3 bg-secondary/10 rounded-full text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
-                                         <CheckCircle size={20} />
-                                    </div>
-                                )}
-                                <div>
-                                    <h4 className="font-bold text-text-primary text-base sm:text-lg">{skill.name}</h4>
-                                    <div className="w-full bg-background/50 rounded-full h-1 mt-2 w-24">
-                                        <div className="bg-secondary h-1 rounded-full" style={{ width: `${skill.level}%` }}></div>
-                                    </div>
+                                <div className="flex items-center justify-between">
+                                    {skill.icon ? (
+                                        <div className="p-3 bg-secondary/10 rounded-lg text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
+                                            <skill.icon size={24} />
+                                        </div>
+                                    ) : (
+                                        <div className="p-3 bg-secondary/10 rounded-lg text-secondary group-hover:bg-secondary group-hover:text-background transition-colors">
+                                             <CheckCircle size={24} />
+                                        </div>
+                                    )}
+                                    <span className="text-sm font-bold text-secondary">{skill.level}%</span>
+                                </div>
+                                <h4 className="font-bold text-text-primary text-lg leading-tight mt-2">{skill.name}</h4>
+                                <div className="w-full bg-background rounded-full h-1 mt-auto">
+                                    <div className="bg-secondary h-1 rounded-full" style={{ width: `${skill.level}%` }}></div>
                                 </div>
                             </motion.div>
                         ))}
@@ -225,13 +230,13 @@ interface SkillBarProps {
 
 const SkillBar: React.FC<SkillBarProps> = ({ skill, colorClass = "bg-primary", textClass = "text-primary" }) => (
     <motion.div variants={itemVariants}>
-        <div className="flex justify-between mb-1">
+        <div className="flex justify-between mb-2">
             <span className="text-base font-medium text-text-primary">{skill.name}</span>
-            <span className={`text-sm font-medium ${textClass}`}>{skill.level}%</span>
+            <span className={`text-sm font-bold ${textClass}`}>{skill.level}%</span>
         </div>
-        <div className="w-full bg-surface/50 rounded-full h-2.5 border border-white/5">
+        <div className="w-full bg-black/30 rounded-full h-3 border border-white/5">
             <motion.div 
-                className={`h-2.5 rounded-full ${colorClass}`} 
+                className={`h-3 rounded-full ${colorClass} shadow-[0_0_10px_rgba(0,163,255,0.5)]`} 
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 viewport={{ once: true }}
@@ -249,56 +254,69 @@ const TimelineItem: React.FC<{ event: TimelineEvent, isLast: boolean }> = ({ eve
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
     >
-        <div className="absolute -left-[23px] top-0 bg-surface p-2 rounded-full border-2 border-primary/50">
+        <div className="absolute -left-[23px] top-0 bg-surface p-2 rounded-full border-2 border-primary/50 shadow-lg shadow-primary/20">
             <event.icon className="text-primary" size={24} />
         </div>
-        <p className="text-sm text-text-secondary">{event.duration}</p>
-        <h3 className="text-xl font-bold text-primary">{event.title}</h3>
-        <p className="font-semibold text-text-primary mb-2">{event.subtitle}</p>
+        <p className="text-sm text-secondary font-bold mb-1">{event.duration}</p>
+        <h3 className="text-xl font-bold text-text-primary">{event.title}</h3>
+        <p className="font-medium text-primary/80 mb-3">{event.subtitle}</p>
         <p className="text-text-secondary">{event.description}</p>
-        {event.image && <img src={event.image} alt={event.title} className="mt-4 rounded-lg w-full max-w-sm" />}
+        {event.image && <img src={event.image} alt={event.title} className="mt-4 rounded-lg w-full max-w-sm border border-white/10 shadow-lg" />}
     </motion.div>
 );
 
 const EducationCard: React.FC<{ education: Education }> = ({ education }) => (
     <motion.div 
-        className="bg-surface p-8 rounded-lg"
+        className="bg-surface p-8 rounded-xl border border-white/5 shadow-lg"
         variants={itemVariants}
     >
-        <h3 className="text-2xl font-bold text-primary">{education.institution}</h3>
-        <p className="font-semibold text-text-primary mb-1">{education.degree}</p>
-        <p className="text-sm text-text-secondary mb-4">{education.duration}</p>
-        <ul className="list-disc list-inside space-y-1 text-text-secondary mb-4">
-            {education.details.map((detail, i) => <li key={i}>{detail}</li>)}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+             <h3 className="text-2xl font-bold text-primary">{education.institution}</h3>
+             <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold w-fit mt-2 md:mt-0">{education.duration}</span>
+        </div>
+        
+        <p className="font-bold text-xl text-text-primary mb-4 flex items-center gap-2">
+            <CheckCircle size={20} className="text-secondary" /> {education.degree}
+        </p>
+        
+        <ul className="space-y-2 text-text-secondary mb-6">
+            {education.details.map((detail, i) => <li key={i} className="flex items-start gap-2"><span className="mt-1.5 w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>{detail}</li>)}
         </ul>
         {education.thesisTitle && (
-            <p><strong className="text-text-primary">Thesis:</strong> {education.thesisTitle}</p>
+            <div className="bg-black/20 p-4 rounded-lg border-l-4 border-secondary">
+                <p className="text-sm text-secondary font-bold uppercase mb-1">Thesis</p>
+                <p className="text-text-primary italic">"{education.thesisTitle}"</p>
+            </div>
         )}
     </motion.div>
 );
 
 const CertificationItem: React.FC<{ certification: Certification }> = ({ certification }) => (
     <motion.li 
-        className="bg-surface p-4 rounded-lg flex items-center gap-4"
+        className="bg-surface p-4 rounded-lg flex items-center gap-4 border border-white/5 hover:border-primary/30 transition-colors"
         variants={itemVariants}
     >
         <CheckCircle className="text-primary flex-shrink-0" />
         <div>
-            <p className="font-bold">{certification.name}</p>
-            <p className="text-sm text-text-secondary">{certification.issuer} - {certification.date}</p>
+            <p className="font-bold text-text-primary">{certification.name}</p>
+            <p className="text-sm text-text-secondary">{certification.issuer} <span className="text-white/20 mx-1">|</span> {certification.date}</p>
         </div>
     </motion.li>
 );
 
 const PublicationItem: React.FC<{ publication: Publication }> = ({ publication }) => (
     <motion.li 
-        className="bg-surface p-4 rounded-lg"
+        className="bg-surface p-4 rounded-lg border border-white/5 hover:border-secondary/30 transition-colors"
         variants={itemVariants}
     >
-        <p className="font-bold">{publication.title} <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full ml-2">{publication.type}</span></p>
-        <p className="text-sm text-text-secondary">{publication.details}</p>
+        <div className="flex items-start justify-between gap-4">
+             <p className="font-bold text-text-primary">{publication.title}</p>
+             <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded border border-primary/20 whitespace-nowrap">{publication.type}</span>
+        </div>
+       
+        <p className="text-sm text-text-secondary mt-2">{publication.details}</p>
         {publication.link && (
-            <a href={publication.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-flex items-center gap-1">
+            <a href={publication.link} target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:underline mt-2 inline-flex items-center gap-1 font-medium">
                 Read More <LinkIcon size={14}/>
             </a>
         )}

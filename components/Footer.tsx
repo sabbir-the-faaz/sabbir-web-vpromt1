@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, BrainCircuit, Youtube, Eye } from 'lucide-react';
+import { Github, Linkedin, BrainCircuit, Youtube, Eye, Facebook } from 'lucide-react';
 import { personalInfo } from '../constants';
 
 const socialLinks = [
@@ -7,6 +8,7 @@ const socialLinks = [
   { icon: Linkedin, href: personalInfo.socials.linkedin, name: 'LinkedIn' },
   { icon: BrainCircuit, href: personalInfo.socials.researchGate, name: 'ResearchGate' },
   { icon: Youtube, href: personalInfo.socials.youtube, name: 'YouTube' },
+  { icon: Facebook, href: personalInfo.socials.facebook, name: 'Facebook' },
 ];
 
 const Footer: React.FC = () => {

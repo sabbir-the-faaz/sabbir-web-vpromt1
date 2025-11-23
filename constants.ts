@@ -1,45 +1,46 @@
 
 import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification } from './types';
-import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers } from 'lucide-react';
+import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers, Handshake, Lightbulb } from 'lucide-react';
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
   title: "Engineer | Researcher | Business Development Strategist",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
-  bio: "I am a results-driven Engineer & Researcher with a unique blend of technical expertise in Computer Vision (AI) and strategic business acumen. My journey spans from developing cutting-edge algorithms for industrial automation to leading business development and merchandising strategies for global brands. Whether conducting advanced research, managing cross-functional teams, or optimizing complex systems, I bring a commitment to innovation and sustainability. I am currently seeking opportunities to leverage my diverse skill set in a Ph.D. program or dynamic industry role.",
+  bio: "I am a results-oriented Engineer, Researcher, and Business Strategist with a unique ability to bridge the gap between technical innovation and commercial success. My journey spans from developing cutting-edge Computer Vision (AI) algorithms for industrial automation to leading high-stakes merchandising and business development strategies for global brands like Calvin Klein and Tommy Hilfiger. With a robust portfolio of international publications and a proven track record in leadership, I excel in translating complex data into actionable strategies. Whether conducting advanced research, negotiating with international stakeholders, or optimizing supply chains, I bring a commitment to excellence and sustainability. I am currently seeking to leverage this multifaceted expertise in a competitive Ph.D. program or a dynamic industry leadership role.",
   contact: {
     email: "sabbir4research@gmail.com",
     phone: "+880 133 26 53 669",
     address: "Dhaka, Bangladesh",
   },
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    researchGate: "https://www.researchgate.net/",
-    youtube: "https://youtube.com",
+    github: "https://github.com/sabbir-the-faaz",
+    linkedin: "https://www.linkedin.com/in/md-sabbir-rahman-akash-78a70716b/",
+    researchGate: "https://www.researchgate.net/profile/Md-Sabbir-Rahman-Akash",
+    youtube: "https://www.youtube.com/@parallelxacademia8622",
+    facebook: "https://www.facebook.com/parallelx.academia"
   },
 };
 
 export const technicalSkills: Skill[] = [
-  { name: 'Computer Vision (YOLOv8, Detectron2)', level: 90 },
-  { name: 'Python (PyTorch, OpenCV)', level: 95 },
-  { name: 'NVIDIA Jetson Nano', level: 85 },
-  { name: 'C / C++', level: 80 },
+  { name: 'Computer Vision (YOLOv8, Detectron2)', level: 95 },
+  { name: 'Python (PyTorch, OpenCV, Pandas)', level: 95 },
+  { name: 'NVIDIA Jetson Nano & Edge AI', level: 85 },
   { name: 'Data Structures & Algorithms', level: 90 },
-  { name: 'SQL & Database Design', level: 75 },
-  { name: 'System Design & Implementation', level: 80 },
-  { name: 'React / Web Development', level: 70 },
+  { name: 'C / C++ Programming', level: 80 },
+  { name: 'System Design & Implementation', level: 85 },
+  { name: 'SQL & Database Management', level: 75 },
+  { name: 'Web Development (React/Node)', level: 70 },
 ];
 
 export const professionalSkills: Skill[] = [
-  { name: 'Strategic Leadership & Team Management', level: 95, icon: Users },
-  { name: 'Business Communication & Negotiation', level: 90, icon: MessageSquare },
-  { name: 'Business Development & Strategy', level: 85, icon: TrendingUp },
-  { name: 'Merchandising & Product Lifecycle', level: 80, icon: ShoppingBag },
-  { name: 'Data Analytics (Excel / Google Sheets)', level: 90, icon: BarChart3 },
-  { name: 'Public Speaking & Mentorship', level: 95, icon: Mic },
+  { name: 'Strategic Leadership & Team Building', level: 98, icon: Users },
+  { name: 'Business Development & Client Relations', level: 95, icon: TrendingUp },
+  { name: 'Global Merchandising & Product Strategy', level: 90, icon: ShoppingBag },
+  { name: 'Business Communication & Negotiation', level: 95, icon: Handshake },
+  { name: 'Advanced Data Analytics (Excel / Google Sheets)', level: 95, icon: BarChart3 },
+  { name: 'Public Speaking & Mentorship', level: 92, icon: Mic },
   { name: 'Research Methodology & Technical Writing', level: 90, icon: FileText },
-  { name: 'Cross-Functional Collaboration', level: 85, icon: Layers },
+  { name: 'Innovation & Strategic Planning', level: 88, icon: Lightbulb },
 ];
 
 export const timelineEvents: TimelineEvent[] = [
