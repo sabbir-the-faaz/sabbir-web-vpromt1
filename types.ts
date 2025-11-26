@@ -87,3 +87,20 @@ export interface Certification {
   issuer: string;
   date: string;
 }
+
+export interface InvestmentOpportunity {
+  slug: string;
+  title: string;
+  category: string;
+  status: 'Open' | 'Closed' | 'Coming Soon';
+  roi: string; 
+  minInvestment: string; 
+  duration: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  description: string;
+  longDescription: string; // Can support Markdown or plain text
+  image: string;
+  model: string; // e.g. "Mudarabah"
+  contractValue?: string;
+  estimatedProfit?: string;
+}

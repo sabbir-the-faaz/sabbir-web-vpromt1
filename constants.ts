@@ -1,12 +1,12 @@
 
-import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification } from './types';
-import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers, Handshake, Lightbulb } from 'lucide-react';
+import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification, InvestmentOpportunity } from './types';
+import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers, Handshake, Lightbulb, Scale } from 'lucide-react';
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
-  title: "Engineer | Researcher | Business Development Strategist",
+  title: "Engineer | Researcher | Business Strategist",
   profilePicture: "https://i.imgur.com/0HemqBs.jpeg",
-  bio: "I am a results-oriented Engineer, Researcher, and Business Strategist with a unique ability to bridge the gap between technical innovation and commercial success. My journey spans from developing cutting-edge Computer Vision (AI) algorithms for industrial automation to leading high-stakes merchandising and business development strategies for global brands like Calvin Klein and Tommy Hilfiger. With a robust portfolio of international publications and a proven track record in leadership, I excel in translating complex data into actionable strategies. Whether conducting advanced research, negotiating with international stakeholders, or optimizing supply chains, I bring a commitment to excellence and sustainability. I am currently seeking to leverage this multifaceted expertise in a competitive Ph.D. program or a dynamic industry leadership role.",
+  bio: "A dynamic professional blending technical precision with strategic business acumen. As an Engineer and Researcher, I specialize in AI-driven industrial automation and sustainable engineering solutions. Simultaneously, as a Business Strategist, I have successfully led merchandising and business development for global fashion giants like Calvin Klein and Tommy Hilfiger. My expertise lies in bridging the gap between complex technical innovations and commercial viability. Whether optimizing supply chains, negotiating high-stakes contracts, or deploying Computer Vision models, I deliver results that drive growth, efficiency, and sustainability. I am currently open to investment partnerships and leadership roles that demand a fusion of analytical rigor and executive vision.",
   contact: {
     email: "sabbir4research@gmail.com",
     phone: "+880 133 26 53 669",
@@ -33,17 +33,25 @@ export const technicalSkills: Skill[] = [
 ];
 
 export const professionalSkills: Skill[] = [
-  { name: 'Strategic Leadership & Team Building', level: 98, icon: Users },
-  { name: 'Business Development & Client Relations', level: 95, icon: TrendingUp },
-  { name: 'Global Merchandising & Product Strategy', level: 90, icon: ShoppingBag },
+  { name: 'Business Development & Strategy', level: 98, icon: TrendingUp },
   { name: 'Business Communication & Negotiation', level: 95, icon: Handshake },
-  { name: 'Advanced Data Analytics (Excel / Google Sheets)', level: 95, icon: BarChart3 },
-  { name: 'Public Speaking & Mentorship', level: 92, icon: Mic },
-  { name: 'Research Methodology & Technical Writing', level: 90, icon: FileText },
-  { name: 'Innovation & Strategic Planning', level: 88, icon: Lightbulb },
+  { name: 'Merchandising (Product Lifecycle)', level: 92, icon: ShoppingBag },
+  { name: 'Advanced Excel & Google Sheets Analytics', level: 98, icon: BarChart3 },
+  { name: 'Strategic Leadership & Team Management', level: 95, icon: Users },
+  { name: 'Public Speaking & Presentation', level: 90, icon: Mic },
+  { name: 'Market Research & Analysis', level: 88, icon: Lightbulb },
+  { name: 'Project Management', level: 90, icon: ClipboardCheck },
 ];
 
 export const timelineEvents: TimelineEvent[] = [
+  {
+    type: 'Career',
+    icon: TrendingUp,
+    title: 'Investment Acquisition Engineer',
+    subtitle: 'Mart Builders',
+    duration: 'January 2025 - Present',
+    description: 'Spearheading investment acquisition initiatives for government and private engineering contracts. Managing the Mudarabah investment portfolio, ensuring Shariah compliance, and maintaining transparent investor relations for high-value projects.'
+  },
   {
     type: 'Teaching',
     icon: BookOpen,
@@ -402,3 +410,47 @@ export const youtubeChannel = {
   featuredVideoUrl: "https://www.youtube-nocookie.com/embed/K8s1DzGeDj0",
   featuredVideoThumbnail: "https://i.ytimg.com/vi/K8s1DzGeDj0/hqdefault.jpg"
 };
+
+export const investmentOpportunities: InvestmentOpportunity[] = [
+  {
+    slug: 'emergency-electrical-repair-sylhet',
+    title: 'Emergency Electrical Repair Works',
+    category: 'Govt. Project',
+    status: 'Open',
+    model: 'Mudarabah',
+    roi: '28% of Profit',
+    minInvestment: 'BDT 100,000',
+    duration: 'Return: 30 Jan 2026',
+    riskLevel: 'Low',
+    contractValue: 'BDT 189,773.90',
+    estimatedProfit: 'BDT 25,000 – 35,000',
+    description: 'Emergency Electrical Repair Works for Cyber Tribunal & Metropolitan Sessions Judge Court, Sylhet under Mart Builders.',
+    longDescription: `
+We invite you to join us in a Shariah-compliant business opportunity under the **Mudarabah Islamic Investment Model**.
+
+**Project Overview:**
+*   **Project Name:** Emergency Electrical Repair Works – Cyber Tribunal & Metropolitan Sessions Judge Court, Sylhet
+*   **Contract Value:** BDT 189,773.90
+*   **Required Capital:** BDT 100,000
+*   **Return Date:** 30 January 2026
+
+**Financial Projections:**
+*   **Estimated Profit:** BDT 25,000 – 35,000
+*   **Profit Sharing (No cap):** If profit >= 35,000 → Investor gets 28% of profit (Approx. BDT 9,800)
+
+**Islamic Compliance:**
+*   No fixed or guaranteed return.
+*   Profit shared as per actual performance.
+*   Loss borne by investor unless caused by negligence.
+*   Fully based on Mudarabah principles (no riba, no gharar).
+
+**Why this investment is low-risk:**
+*   ✔️ Government-issued NOA (Notice of Award)
+*   ✔️ Short project duration
+*   ✔️ Full transparency in expenses & documentation
+
+If you’d like to participate or need more information, feel free to contact us.
+    `,
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop',
+  }
+];

@@ -10,6 +10,7 @@ const navLinks = [
   { path: '/about', label: 'About' },
   { path: '/portfolio', label: 'Portfolio' },
   { path: '/research', label: 'Research' },
+  { path: '/investments', label: 'Investments' },
   { path: '/awards', label: 'Awards' },
   { path: '/blog', label: 'Blog' },
   { path: '/student-corner', label: 'Student Corner' },

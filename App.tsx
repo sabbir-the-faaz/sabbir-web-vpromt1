@@ -9,6 +9,8 @@ import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/ProjectDetail';
 import Research from './pages/Research';
 import ResearchDetail from './pages/ResearchDetail';
+import Investments from './pages/Investments';
+import InvestmentDetail from './pages/InvestmentDetail';
 import Awards from './pages/Awards';
 import AwardDetail from './pages/AwardDetail';
 import Blog from './pages/Blog';
@@ -37,6 +39,8 @@ function Main() {
           <Route path="/portfolio/:slug" element={<ProjectDetail />} />
           <Route path="/research" element={<Research />} />
           <Route path="/research/:slug" element={<ResearchDetail />} />
+          <Route path="/investments" element={<Investments />} />
+          <Route path="/investments/:slug" element={<InvestmentDetail />} />
           <Route path="/awards" element={<Awards />} />
           <Route path="/awards/:slug" element={<AwardDetail />} />
           <Route path="/blog" element={<Blog />} />
