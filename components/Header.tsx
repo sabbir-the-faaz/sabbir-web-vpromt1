@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { personalInfo } from '../constants';
 
 const navLinks = [
@@ -12,104 +13,78 @@ const navLinks = [
   { path: '/investments', label: 'Investments' },
   { path: '/awards', label: 'Awards' },
   { path: '/blog', label: 'Blog' },
-  { path: '/student-corner', label: 'Student' },
+  { path: '/student-corner', label: 'Student Corner' },
   { path: '/contact', label: 'Contact' },
 ];
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const activeLinkStyle = {
+    color: '#00A3FF',
+    fontWeight: 'bold',
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled || isMenuOpen ? 'bg-background/90 backdrop-blur-2xl border-b border-white/5 py-3' : 'bg-transparent py-7'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || isMenuOpen ? 'bg-surface/80 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-50"
-        style={{ scaleX }}
-      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative h-11 w-11 overflow-hidden rounded-full border border-white/10 transition-transform group-hover:scale-110">
-              <img 
-                src={personalInfo.profilePicture} 
-                alt="S. R. Akash" 
-                className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-display font-black text-white tracking-tight leading-none">
-                S. R. AKASH
-              </span>
-              <span className="text-[9px] text-primary font-corporate font-bold tracking-[0.3em] mt-1.5 opacity-60 group-hover:opacity-100 transition-opacity uppercase">
-                Engineer & Strategist
-              </span>
-            </div>
+        <div className="flex items-center justify-between h-20">
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src={personalInfo.profilePicture} 
+              alt="S. R. Akash Logo" 
+              className="h-10 w-10 rounded-full border-2 border-primary/50 object-cover"
+            />
+            <span className="text-xl font-display font-bold text-primary">
+              S. R. Akash
+            </span>
           </Link>
-          
-          <nav className="hidden xl:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className={({ isActive }) => 
-                  `px-4 py-2 text-[13px] font-corporate font-semibold tracking-wider transition-all rounded-lg hover:bg-white/5 ${
-                    isActive ? 'text-primary' : 'text-text-secondary hover:text-white'
-                  }`
-                }
+                className="text-text-secondary hover:text-primary transition-colors"
+                style={({ isActive }) => (isActive ? activeLinkStyle : {})}
               >
-                {link.label.toUpperCase()}
+                {link.label}
               </NavLink>
             ))}
           </nav>
-
-          <div className="xl:hidden">
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-white hover:bg-white/5 rounded-lg transition-colors"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="xl:hidden bg-background border-b border-white/5 overflow-hidden"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-surface pb-4"
         >
-          <nav className="flex flex-col p-6 space-y-1">
+          <nav className="flex flex-col items-center space-y-4">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={({ isActive }) => 
-                  `px-4 py-4 text-lg font-corporate font-bold transition-all rounded-xl ${
-                    isActive ? 'text-primary bg-primary/5' : 'text-text-secondary hover:text-white hover:bg-white/5'
-                  }`
-                }
+                className="text-text-secondary hover:text-primary transition-colors text-lg"
+                style={({ isActive }) => (isActive ? activeLinkStyle : {})}
               >
                 {link.label}
               </NavLink>
