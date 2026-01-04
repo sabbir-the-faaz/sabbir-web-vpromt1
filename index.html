@@ -35,7 +35,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       body {
         background-color: #040405;
@@ -44,17 +44,18 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
+        line-height: 1.6;
       }
       
       /* Professional Executive Scrollbar */
       ::-webkit-scrollbar {
-        width: 5px;
+        width: 4px;
       }
       ::-webkit-scrollbar-track {
         background: #040405;
       }
       ::-webkit-scrollbar-thumb {
-        background: #1E1E21;
+        background: #27272A;
         border-radius: 10px;
       }
       ::-webkit-scrollbar-thumb:hover {
@@ -66,24 +67,21 @@
 
       /* Executive Glassmorphism */
       .glass {
-        background: rgba(13, 13, 15, 0.8);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: rgba(13, 13, 15, 0.85);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
       /* Refined Content Styles */
-      .prose h2 { margin-top: 2.5em; margin-bottom: 1em; font-size: 2.25rem; font-weight: 800; color: #F8FAFC; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; }
-      .prose h3 { margin-top: 1.8em; margin-bottom: 0.8em; font-size: 1.65rem; font-weight: 700; color: #F8FAFC; font-family: 'Playfair Display', serif; }
-      .prose p { margin-bottom: 1.6em; line-height: 1.85; color: #94A3B8; font-size: 1.1rem; }
-      .prose a { color: #00A3FF; text-decoration: none; font-weight: 600; transition: color 0.2s; border-bottom: 1px solid rgba(0, 163, 255, 0.2); }
+      .prose h2 { margin-top: 2em; margin-bottom: 0.75em; font-size: 1.85rem; font-weight: 700; color: #F8FAFC; letter-spacing: -0.01em; font-family: 'Playfair Display', serif; }
+      .prose h3 { margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.4rem; font-weight: 600; color: #F8FAFC; font-family: 'Playfair Display', serif; }
+      .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #94A3B8; font-size: 1.05rem; }
+      .prose a { color: #00A3FF; text-decoration: none; font-weight: 500; transition: color 0.2s; border-bottom: 1px solid rgba(0, 163, 255, 0.15); }
       .prose a:hover { color: #FFFFFF; border-bottom-color: #00A3FF; }
-      .prose ul { list-style-type: none; padding-left: 0; margin-bottom: 1.8em; }
-      .prose ul li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; color: #94A3B8; }
-      .prose ul li::before { content: "•"; position: absolute; left: 0; color: #00A3FF; font-weight: bold; }
       
       .glow-hover:hover {
-        box-shadow: 0 0 30px rgba(0, 163, 255, 0.1);
+        box-shadow: 0 0 40px rgba(0, 163, 255, 0.08);
       }
     </style>
   <script type="importmap">
