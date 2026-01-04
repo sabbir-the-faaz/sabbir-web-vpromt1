@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { personalInfo, projects, awards, blogPosts, youtubeChannel, researchProjects } from '../constants';
-import { ArrowRight, ChevronDown, FileText, Presentation, Trophy, Users, Briefcase, Languages } from 'lucide-react';
+import { ArrowRight, ChevronDown, FileText, Presentation, Trophy, Users, Briefcase, Languages, ExternalLink, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { containerVariants, itemVariants } from '../utils/animations';
 
@@ -17,7 +17,6 @@ const Home: React.FC = () => {
   const featuredProjects = projects.slice(0, 2);
   const featuredResearch = researchProjects.slice(0, 2);
   const featuredAwards = awards.slice(0, 3);
-  const featuredBlogPosts = blogPosts.slice(0, 2);
 
   const achievements = [
     { icon: FileText, value: 4, label: "Publications", suffix: "+" },
@@ -28,219 +27,213 @@ const Home: React.FC = () => {
     { icon: Languages, value: 7, label: "IELTS Band", suffix: "" },
   ];
 
-  const achievementsRef = useRef(null);
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: achievementsRef,
-    offset: ["start end", "end start"]
+    target: heroRef,
+    offset: ["start start", "end start"]
   });
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-25%", "25%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
 
   return (
     <AnimatedPage>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white -mt-20">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center -mt-20 overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0 grayscale opacity-40"
           src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/70 z-10"></div>
-        <div className="relative z-20 text-center container mx-auto px-4">
-          <motion.img
-            src={personalInfo.profilePicture}
-            alt={personalInfo.name}
-            className="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-primary shadow-lg"
-            initial={{ scale: 0, opacity: 0 }}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background/95 via-background/80 to-background z-10"></div>
+        
+        <motion.div 
+            style={{ opacity, scale }}
+            className="relative z-20 text-center container mx-auto px-4 max-w-6xl"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-          <motion.h1 
-            className="text-5xl md:text-7xl font-display font-black mb-4 uppercase tracking-wider"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ duration: 1, type: 'spring' }}
+            className="mb-12 inline-block p-1 rounded-full border border-white/10"
           >
-            {personalInfo.name}
+            <img
+                src={personalInfo.profilePicture}
+                alt={personalInfo.name}
+                className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-background object-cover grayscale"
+            />
+          </motion.div>
+          
+          <motion.h1 
+            className="text-6xl md:text-[8rem] font-display font-black mb-8 tracking-tight leading-[0.85] text-white"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            Md. Sabbir <br />
+            <span className="text-primary italic font-serif">Rahman Akash</span>
           </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-text-secondary mb-8"
+          
+          <motion.div 
+            className="flex flex-wrap items-center justify-center gap-4 mb-14"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
-            {personalInfo.title}
-          </motion.p>
+            <span className="text-xs md:text-sm font-corporate font-extrabold text-text-secondary px-6 py-2.5 bg-white/5 rounded-full border border-white/5 uppercase tracking-[0.25em]">Engineer</span>
+            <span className="text-xs md:text-sm font-corporate font-extrabold text-text-secondary px-6 py-2.5 bg-white/5 rounded-full border border-white/5 uppercase tracking-[0.25em]">Researcher</span>
+            <span className="text-xs md:text-sm font-corporate font-extrabold text-text-secondary px-6 py-2.5 bg-white/5 rounded-full border border-white/5 uppercase tracking-[0.25em]">Strategist</span>
+          </motion.div>
+
           <motion.div
              initial={{ y: 20, opacity: 0 }}
              animate={{ y: 0, opacity: 1 }}
-             transition={{ delay: 0.6, duration: 0.5 }}
+             transition={{ delay: 0.6, duration: 0.8 }}
+             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Link to="/contact" className="bg-primary text-background font-bold py-3 px-8 rounded-full hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-flex items-center">
-              Get in Touch <ArrowRight className="ml-2" />
+            <Link to="/portfolio" className="w-full sm:w-auto bg-primary text-background font-corporate font-black py-4.5 px-14 rounded-xl hover:bg-white hover:text-primary transition-all duration-500 shadow-xl flex items-center justify-center group text-lg tracking-wider">
+              PORTFOLIO <ArrowRight className="ml-3 group-hover:translate-x-1.5 transition-transform" />
+            </Link>
+            <Link to="/investments" className="w-full sm:w-auto bg-white/5 backdrop-blur-md text-white font-corporate font-black py-4.5 px-14 rounded-xl hover:bg-white/10 transition-all duration-500 border border-white/10 flex items-center justify-center text-lg tracking-wider">
+              INVESTMENTS <ExternalLink className="ml-3" size={20} />
             </Link>
           </motion.div>
-        </div>
-         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+        </motion.div>
+
+         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
             <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, repeatType: 'loop' }}
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             >
-                <ChevronDown size={48} className="text-white/50" />
+                <ChevronDown size={36} className="text-text-muted/30" />
             </motion.div>
         </div>
       </section>
 
-      {/* Achievements by the Numbers */}
-      <section 
-        ref={achievementsRef}
-        className="py-20 relative overflow-hidden"
-      >
-        <motion.div
-            className="absolute inset-0 z-0 bg-cover bg-center"
-            style={{
-                backgroundImage: "url('https://i.imgur.com/Th0OGFa.png')",
-                y: backgroundY,
-            }}
-        />
-        <div className="absolute inset-0 z-10 bg-background/85"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Achievements by the Numbers</h2>
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+      {/* Institutional Stats */}
+      <section className="py-40 relative bg-surface">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 lg:grid-cols-6 gap-10 md:gap-6">
               {achievements.map((item, index) => (
-                <motion.div key={index} variants={itemVariants} className="flex flex-col items-center p-4">
-                    <item.icon className="text-secondary mb-4" size={48} />
-                    <div className="text-5xl font-display font-bold text-secondary">
+                <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex flex-col items-center text-center p-8 rounded-[2.5rem] bg-background border border-white/5 group hover:border-primary/25 transition-all duration-500"
+                >
+                    <item.icon className="text-text-muted group-hover:text-primary transition-colors mb-6" size={30} strokeWidth={1.5} />
+                    <div className="text-4xl md:text-5xl font-display font-black text-white mb-2">
                         <AnimatedCounter to={item.value} />
-                        {item.suffix}
+                        <span className="text-primary italic">{item.suffix}</span>
                     </div>
-                    <p className="text-text-secondary mt-2 text-lg">{item.label}</p>
+                    <p className="text-[10px] text-text-muted uppercase tracking-[0.3em] font-extrabold">{item.label}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
         </div>
       </section>
 
-      {/* Sections Wrapper */}
-      <div className="bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
-          
-          {/* Featured Projects */}
-          <section>
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Featured Projects</h2>
-            <motion.div 
-              className="grid md:grid-cols-2 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              {featuredProjects.map(project => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </motion.div>
-            <div className="text-center mt-12">
-                <Link to="/portfolio" className="text-primary hover:underline text-lg">View all projects &rarr;</Link>
+      {/* Major Content Sections */}
+      <div className="space-y-52 pb-52">
+        
+        {/* Portfolio Showcase */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-52">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="max-w-3xl">
+              <span className="text-primary font-corporate font-black tracking-[0.5em] text-[10px] uppercase block mb-4">Industrial Applications</span>
+              <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tighter uppercase leading-none">Portfolio</h2>
+              <p className="text-text-secondary text-2xl font-light leading-relaxed">Synthesizing computer vision, edge intelligence, and sustainable methodologies to redefine industrial quality control.</p>
             </div>
-          </section>
+            <Link to="/portfolio" className="text-primary font-corporate font-black text-sm uppercase tracking-[0.3em] inline-flex items-center gap-3 group hover:gap-5 transition-all">
+                EXPLORE ALL WORKS <ArrowRight size={22} />
+            </Link>
+          </div>
+          <motion.div 
+            className="grid md:grid-cols-2 gap-12"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {featuredProjects.map(project => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </motion.div>
+        </section>
 
-          {/* Featured Research */}
-          <section>
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Featured Research</h2>
-            <motion.div 
-              className="grid md:grid-cols-2 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              {featuredResearch.map(project => (
-                <ResearchCard key={project.slug} project={project} />
-              ))}
-            </motion.div>
-            <div className="text-center mt-12">
-                <Link to="/research" className="text-primary hover:underline text-lg">View all research &rarr;</Link>
+        {/* Research Excellence */}
+        <section className="bg-surface-light py-52 relative overflow-hidden">
+           <div className="absolute -top-60 -right-60 w-[35rem] h-[35rem] bg-primary/5 blur-[180px] rounded-full"></div>
+           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                    <div className="max-w-3xl">
+                        <span className="text-primary font-corporate font-black tracking-[0.5em] text-[10px] uppercase block mb-4">Scholarly Contributions</span>
+                        <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tighter uppercase leading-none">Research</h2>
+                        <p className="text-text-secondary text-2xl font-light leading-relaxed">Advancing the intersection of theoretical physics and applied material science in automated industrial ecosystems.</p>
+                    </div>
+                    <Link to="/research" className="text-primary font-corporate font-black text-sm uppercase tracking-[0.3em] inline-flex items-center gap-3 group hover:gap-5 transition-all">
+                        PUBLICATIONS INDEX <ArrowRight size={22} />
+                    </Link>
+                </div>
+                <motion.div 
+                    className="grid lg:grid-cols-2 gap-12"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                >
+                    {featuredResearch.map(project => (
+                        <ResearchCard key={project.slug} project={project} />
+                    ))}
+                </motion.div>
+           </div>
+        </section>
+
+        {/* Honors & Recognitions */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-24">
+                <span className="text-primary font-corporate font-black tracking-[0.5em] text-[10px] uppercase block mb-4">Academic & Professional Merit</span>
+                <h2 className="text-5xl md:text-8xl font-display font-black text-white tracking-tighter uppercase leading-none mb-6">Honors</h2>
+                <div className="h-[3px] w-32 bg-primary/40 mx-auto rounded-full"></div>
             </div>
-          </section>
-
-          {/* Featured Awards */}
-          <section>
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Recent Awards</h2>
              <motion.div 
-                className="grid md:grid-cols-3 gap-8"
+                className="grid md:grid-cols-3 gap-12"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true }}
             >
               {featuredAwards.map(award => (
                 <AwardCard key={award.slug} award={award} />
               ))}
             </motion.div>
-            <div className="text-center mt-12">
-                <Link to="/awards" className="text-primary hover:underline text-lg">View all awards &rarr;</Link>
+            <div className="text-center mt-24">
+                <Link to="/awards" className="inline-flex items-center gap-5 bg-white/5 border border-white/10 px-12 py-6 rounded-[1.5rem] font-corporate font-black text-[11px] tracking-[0.4em] hover:bg-white/10 transition-colors uppercase">
+                    VIEW ALL RECOGNITIONS <ArrowRight size={22} className="text-primary" />
+                </Link>
             </div>
-          </section>
-          
-           {/* YouTube Channel */}
-          <section className="bg-background rounded-lg p-8">
-             <h2 className="text-4xl font-display font-bold mb-8 text-center">{youtubeChannel.name}</h2>
-             <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="md:w-1/2">
-                    <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-                        <iframe 
-                            src={youtubeChannel.featuredVideoUrl} 
-                            title="YouTube video player" 
-                            frameBorder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen
-                            className="w-full h-full"
-                        ></iframe>
-                    </div>
-                </div>
-                <div className="md:w-1/2">
-                    <p className="text-text-secondary mb-6">{youtubeChannel.description}</p>
-                    <motion.a 
-                        href={personalInfo.socials.youtube} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="bg-red-600 text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 inline-flex items-center"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Visit Channel <ArrowRight className="ml-2" />
-                    </motion.a>
-                </div>
-             </div>
-          </section>
+        </section>
 
-          {/* Featured Blog Posts */}
-          <section>
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Latest from the Blog</h2>
-            <motion.div 
-                className="grid md:grid-cols-2 gap-8"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-            >
-              {featuredBlogPosts.map(post => (
-                <BlogPostCard key={post.slug} post={post} />
-              ))}
-            </motion.div>
-             <div className="text-center mt-12">
-                <Link to="/blog" className="text-primary hover:underline text-lg">Read all posts &rarr;</Link>
+        {/* Executive Call to Action */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-primary rounded-[4rem] p-20 md:p-40 text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div className="relative z-10">
+                    <h2 className="text-6xl md:text-[9rem] font-display font-black text-background mb-10 leading-[0.8] tracking-tighter uppercase">Let's Synthesize <br/> Excellence</h2>
+                    <p className="text-background/90 max-w-3xl mx-auto mb-20 text-2xl font-medium tracking-tight">Available for high-stakes research collaborations, strategic leadership roles, and investment partnerships.</p>
+                    <Link 
+                        to="/contact" 
+                        className="bg-background text-white font-corporate font-black py-7 px-20 rounded-[1.25rem] hover:bg-white hover:text-background transition-all duration-500 inline-flex items-center gap-4 text-xl uppercase tracking-[0.3em] shadow-2xl"
+                    >
+                        ESTABLISH CONTACT <Mail size={26} />
+                    </Link>
+                </div>
             </div>
-          </section>
-        </div>
+        </section>
       </div>
     </AnimatedPage>
   );

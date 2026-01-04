@@ -1,57 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MD. SABBIR RAHMAN AKASH | Portfolio & Blog</title>
+    <title>MD. SABBIR RAHMAN AKASH | Engineer & Strategist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              background: '#121212',
-              surface: '#1E1E1E',
+              background: '#040405',
+              surface: '#0D0D0F',
+              'surface-light': '#141417',
               primary: '#00A3FF',
+              'primary-dark': '#0082CC',
               secondary: '#FFC700',
-              'text-primary': '#E0E0E0',
-              'text-secondary': '#A0A0A0',
+              'text-primary': '#F8FAFC',
+              'text-secondary': '#94A3B8',
+              'text-muted': '#64748B',
             },
             fontFamily: {
-              sans: ['Lato', 'sans-serif'],
-              display: ['Montserrat', 'sans-serif'],
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              display: ['Playfair Display', 'serif'],
+              corporate: ['Outfit', 'sans-serif'],
             },
+            animation: {
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
           },
         },
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       body {
-        background-color: #121212;
-        color: #E0E0E0;
-        font-family: 'Lato', sans-serif;
+        background-color: #040405;
+        color: #F8FAFC;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
       }
-      .font-display {
-        font-family: 'Montserrat', sans-serif;
+      
+      /* Professional Executive Scrollbar */
+      ::-webkit-scrollbar {
+        width: 5px;
       }
-      /* Custom Prose styles to replace @tailwindcss/typography */
-      .prose h2 { margin-top: 1.5em; margin-bottom: 0.75em; font-size: 1.875rem; font-weight: 700; color: #E0E0E0; }
-      .prose h3 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5rem; font-weight: 700; color: #E0E0E0; }
-      .prose p { margin-bottom: 1em; line-height: 1.75; color: #A0A0A0;}
-      .prose a { color: #FFC700; text-decoration: underline; }
-      .prose a:hover { color: #00A3FF; }
-      .prose strong { color: #E0E0E0; }
-      .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; color: #A0A0A0; }
-      .prose ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1em; color: #A0A0A0; }
-      .prose li { margin-bottom: 0.5em; }
-      .prose code { background-color: #1E1E1E; padding: 0.2em 0.4em; margin: 0; font-size: 85%; border-radius: 3px; color: #FFC700; }
-      .prose pre { background-color: #1E1E1E; padding: 1em; border-radius: 0.5em; overflow-x: auto; margin: 1.5em 0; }
-      .prose pre code { padding: 0; background-color: transparent; color: inherit; font-size: 100%;}
-      .prose blockquote { border-left: 4px solid #00A3FF; padding-left: 1em; margin: 1.5em 0; font-style: italic; color: #A0A0A0; }
+      ::-webkit-scrollbar-track {
+        background: #040405;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1E1E21;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00A3FF;
+      }
+
+      .font-display { font-family: 'Playfair Display', serif; }
+      .font-corporate { font-family: 'Outfit', sans-serif; }
+
+      /* Executive Glassmorphism */
+      .glass {
+        background: rgba(13, 13, 15, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      /* Refined Content Styles */
+      .prose h2 { margin-top: 2.5em; margin-bottom: 1em; font-size: 2.25rem; font-weight: 800; color: #F8FAFC; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; }
+      .prose h3 { margin-top: 1.8em; margin-bottom: 0.8em; font-size: 1.65rem; font-weight: 700; color: #F8FAFC; font-family: 'Playfair Display', serif; }
+      .prose p { margin-bottom: 1.6em; line-height: 1.85; color: #94A3B8; font-size: 1.1rem; }
+      .prose a { color: #00A3FF; text-decoration: none; font-weight: 600; transition: color 0.2s; border-bottom: 1px solid rgba(0, 163, 255, 0.2); }
+      .prose a:hover { color: #FFFFFF; border-bottom-color: #00A3FF; }
+      .prose ul { list-style-type: none; padding-left: 0; margin-bottom: 1.8em; }
+      .prose ul li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; color: #94A3B8; }
+      .prose ul li::before { content: "•"; position: absolute; left: 0; color: #00A3FF; font-weight: bold; }
+      
+      .glow-hover:hover {
+        box-shadow: 0 0 30px rgba(0, 163, 255, 0.1);
+      }
     </style>
   <script type="importmap">
 {
