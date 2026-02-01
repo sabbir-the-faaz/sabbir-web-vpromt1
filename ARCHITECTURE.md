@@ -71,7 +71,7 @@ The primary source of truth is `constants.ts`, utilizing interfaces defined in `
 
 | URL                                                                                 | Page / Component      | Context / Purpose                                   |
 | ----------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------- |
-| `https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4`      | `Home.tsx`            | Background video for the main hero section.         |
+| `https://www.pexels.com/download/video/7255352/`                                   | `Home.tsx`            | Background video for the main hero section.         |
 | `https://i.imgur.com/du9IEPR.jpeg`                                                   | `About.tsx`           | New professional header banner.                     |
 | `https://i.imgur.com/Th0OGFa.png`                                                     | `Portfolio.tsx`       | Decorative banner for the portfolio page.           |
 | `https://i.imgur.com/74atleo.png`                                                     | `Research.tsx`        | Decorative banner for the research page.            |

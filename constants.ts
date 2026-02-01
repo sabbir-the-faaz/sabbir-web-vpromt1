@@ -1,6 +1,5 @@
-
 import type { Project, BlogPost, ResearchProject, Award, TimelineEvent, Education, Skill, Publication, Certification, InvestmentOpportunity } from './types';
-import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, MessageSquare, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Layers, Handshake, Lightbulb, Scale } from 'lucide-react';
+import { Briefcase, BookOpen, Users, GraduationCap, Award as AwardIcon, CheckCircle, BrainCircuit, TrendingUp, ShoppingBag, BarChart3, Mic, FileText, ClipboardCheck, Handshake, Lightbulb, Scale } from 'lucide-react';
 
 export const personalInfo = {
   name: "MD. SABBIR RAHMAN AKASH",
@@ -46,11 +45,11 @@ export const professionalSkills: Skill[] = [
 export const timelineEvents: TimelineEvent[] = [
   {
     type: 'Career',
-    icon: TrendingUp,
-    title: 'Investment Acquisition Engineer',
-    subtitle: 'Mart Builders',
-    duration: 'January 2025 - Present',
-    description: 'Spearheading investment acquisition initiatives for government and private engineering contracts. Managing the Mudarabah investment portfolio, ensuring Shariah compliance, and maintaining transparent investor relations for high-value projects.'
+    icon: ClipboardCheck,
+    title: 'Industrial Training - Business Development',
+    subtitle: 'Picard (A Reputed Leather Bag manufacturing company)',
+    duration: 'August 2025',
+    description: 'Specialized industrial training focused on product lifecycle management and business development for global luxury brands (CK, TH). Engaged in buyer negotiation, prototyping, and process optimization strategies.'
   },
   {
     type: 'Teaching',
@@ -67,14 +66,6 @@ export const timelineEvents: TimelineEvent[] = [
     subtitle: 'Mart Builders, Sylhet',
     duration: 'June 2024 - Dec 2024',
     description: 'Researched and deployed computer vision models (YOLOv8, Detectron2) on Jetson Nano for real-time gas pipeline defect detection. Developed custom datasets and trained models to achieve high accuracy.'
-  },
-  {
-    type: 'Career',
-    icon: Briefcase,
-    title: 'Junior Officer - Business Development',
-    subtitle: 'Picard (A Reputed Leather Bag manufacturing company)',
-    duration: 'Jan 2025 - June 2025',
-    description: 'Worked on leather bag development for Calvin Klein (CK) and Tommy Hilfiger (TH), communicating with buyers and developing prototypes. Presented tech-driven process improvement ideas.'
   },
   {
     type: 'Research',
@@ -250,31 +241,6 @@ YOLOv8 is a powerful and flexible framework that is suitable for a wide range of
     `,
     featuredImage: 'https://picsum.photos/seed/yolo/800/400',
     category: 'Computer Vision'
-  },
-  {
-    slug: 'sustainable-technology',
-    title: 'Sustainable Technology: A Path to a Greener Future',
-    date: '2023-11-15',
-    author: 'MD. SABBIR RAHMAN AKASH',
-    excerpt: 'Technology and sustainability are often seen as opposing forces. However, a new wave of "Green Tech" is proving that innovation can be the key to solving our biggest environmental challenges.',
-    content: `
-## The Need for Green Tech
-As the world grapples with climate change, pollution, and resource depletion, the need for sustainable solutions has never been more urgent. The tech industry, with its massive energy consumption and electronic waste, has a significant role to play. Sustainable technology, or Green Tech, aims to mitigate this impact by creating products and services that are environmentally friendly.
-
-## Areas of Innovation
-1.  **Renewable Energy:** AI-powered smart grids that optimize energy distribution from solar and wind sources.
-2.  **Circular Economy:** Developing devices that are easier to repair, upgrade, and recycle, reducing e-waste.
-3.  **Sustainable AI:** Creating more energy-efficient machine learning models and data centers.
-4.  **Precision Agriculture:** Using IoT sensors and drones to reduce water and pesticide usage while maximizing crop yields.
-
-## A Personal Perspective
-In my research on using industrial byproducts for eco-friendly materials, I've seen firsthand how scientific innovation can turn waste into value. The same principles can be applied to technology. By designing with sustainability in mind from the outset, we can build a tech ecosystem that supports both human progress and planetary health.
-
-## Conclusion
-The path to a greener future requires a fundamental shift in how we design, build, and consume technology. It's a challenge that requires collaboration between engineers, policymakers, and consumers, but it's a challenge we must meet.
-    `,
-    featuredImage: 'https://picsum.photos/seed/green-tech/800/400',
-    category: 'Technology'
   }
 ];
 
@@ -289,39 +255,7 @@ export const researchProjects: ResearchProject[] = [
         longDescription: 'This undergraduate thesis project developed a novel system for automatically grading finished leather. It involved creating a custom dataset, training a VGG-16 based convolutional neural network, and achieving over 95% accuracy in classifying leather into four distinct grades. The work was published and presented at an international conference.',
         image: 'https://picsum.photos/seed/leather-tech/800/400',
         images: ['https://picsum.photos/seed/leather-tech-detail1/800/600', 'https://picsum.photos/seed/leather-tech-detail2/800/600'],
-    },
-    {
-        slug: 'compost-technique-research',
-        title: 'International Journal: Atypical co-composting technique of managing tannery limed fleshing',
-        institution: 'Md. Abul Hashem\'s Lab',
-        duration: 'Published 2024',
-        supervisor: 'Prof. Dr. Md. Abul Hashem',
-        description: 'Developed an atypical co-composting technique to transform tannery limed fleshing into nutrient-rich compost, reducing solid waste pollution.',
-        longDescription: 'This research presents a new co-composting method that effectively breaks down harmful solid waste from the leather tanning process. By optimizing the mix of waste materials and microbial activity, the technique reduces environmental impact and produces a safe, usable compost.',
-        image: 'https://picsum.photos/seed/compost-science/800/400',
-        images: ['https://picsum.photos/seed/compost-science-detail1/800/600'],
-    },
-    {
-        slug: 'goatskin-preservation-research',
-        title: 'International Conference: Bagasse for goatskin preservation to reduce chloride in soaking operation',
-        institution: 'Research Project',
-        duration: '2020',
-        supervisor: 'Research Team',
-        description: 'Conducted research on sustainable goat skin preservation methods using plant-based alternatives to reduce environmental impact.',
-        longDescription: 'This study explored the use of bagasse, a byproduct of sugarcane processing, as a natural and sustainable agent for preserving goatskin. The method aims to replace or reduce the reliance on salt-based preservation, which has a significant negative environmental footprint.',
-        image: 'https://i.imgur.com/cN9pjkI.png'
-    },
-    {
-        slug: 'chromium-adsorption-research',
-        title: 'International Conference: Adsorption of chromium from tannery wastewater on russet potato peel charcoal',
-        institution: 'Environmental Science Research',
-        duration: '2021',
-        supervisor: 'Lab Team',
-        description: 'Investigated chromium adsorption from tannery wastewater using russet potato peel charcoal, achieving 98.9% chromium removal.',
-        longDescription: 'This project focused on an eco-friendly adsorbent to remove toxic chromium from industrial wastewater. The research involved optimizing parameters like pH, contact time, and dose to meet discharge limits. Published in Proceedings of ICSTB-2021, Dhaka, Bangladesh.',
-        image: 'https://picsum.photos/seed/chemistry-water/800/400',
-        images: ['https://i.imgur.com/9KAJR8t.png', 'https://i.imgur.com/Qgobdft.png', 'https://i.imgur.com/1JeMFXz.png'],
-    },
+    }
 ];
 
 export const awards: Award[] = [
@@ -330,49 +264,11 @@ export const awards: Award[] = [
         title: 'Winner and Best Poster Presentation Award for Outstanding Research',
         organization: 'KUET Leather Engineering Seminar Series 2023',
         date: 'September 2023',
-        description: 'Awarded for research on "Biodegradable Solid Waste (Orange Peel) Preserved Goat Skin in the Production of Fire Resistance Automobile Seat Leather".',
+        description: 'Awarded for research on \"Biodegradable Solid Waste (Orange Peel) Preserved Goat Skin in the Production of Fire Resistance Automobile Seat Leather\".',
         longDescription: 'As Team Leader, I led our team to win the top prize for our innovative research. This award recognized the project for its significant potential impact and the clarity and quality of its presentation.',
         image: 'https://i.imgur.com/NZ4Z7zt.png',
         images: ['https://picsum.photos/seed/award1-detail1/800/600', 'https://picsum.photos/seed/award1-detail2/800/600'],
-    },
-    {
-        slug: 'first-runners-up-olympiad',
-        title: 'First Runners Up, Red & White Innovation Olympiad 1.0',
-        organization: 'Red & White Innovations (National Level Competition)',
-        date: 'January 2021',
-        description: 'Secured second place for a Health Based Case Study Competition focused on brainstorming and researching for new ideas.',
-        longDescription: 'Our team developed a concept for a low-cost, biodegradable material from industrial waste. The project was judged on its feasibility, market potential, and environmental impact. We presented a detailed business plan and a prototype to a panel of industry experts.',
-        image: 'https://picsum.photos/seed/award2/400/200',
-        images: ['https://picsum.photos/seed/award2-detail1/800/600'],
-    },
-    {
-        slug: 'second-runners-up-redesign',
-        title: 'Second Runners Up, Redesign 2020',
-        organization: 'IIT, University of Dhaka (National Level Competition)',
-        date: 'December 2020',
-        description: 'Achieved third place in an IT-based Case Study Competition focused on creative solutions for project management software.',
-        longDescription: 'The challenge was to redesign a common household item to be more sustainable and user-friendly. Our team redesigned a water purifier to use less plastic, incorporate recyclable filters, and feature a smart monitoring system.',
-        image: 'https://picsum.photos/seed/award3/400/200',
-        images: ['https://picsum.photos/seed/award3-detail1/800/600', 'https://picsum.photos/seed/award3-detail2/800/600'],
-    },
-    {
-        slug: 'biz-bash-case-study',
-        title: '6th Position, Biz Bash Case Study',
-        organization: 'KUET Career Club, Khulna, Bangladesh',
-        date: 'May 2020',
-        description: 'Placed 6th in a business case study competition to research and identify a new location for a new business.',
-        longDescription: 'Analyzed a complex business case and presented a strategic plan. The solution focused on market repositioning, product diversification, and operational efficiency improvements.',
-        image: 'https://i.imgur.com/f3YBqjQ.png',
-    },
-    {
-        slug: 'technical-scholarship',
-        title: 'Technical Scholarship',
-        organization: 'Khulna University of Engineering & Technology',
-        date: '2019-2024',
-        description: 'Awarded a scholarship for 4 consecutive years for academic excellence.',
-        longDescription: 'This merit-based scholarship was awarded each year based on maintaining a high GPA and academic standing within the department.',
-        image: 'https://picsum.photos/seed/award5/400/200',
-    },
+    }
 ];
 
 export const publications: Publication[] = [
@@ -386,21 +282,6 @@ export const publications: Publication[] = [
         type: 'Conference',
         title: 'Laboratory scale brick production from leather buffing dust to manage solid waste in tannery',
         details: 'Hashem, M. A., Ahmed, T., Fuad, M. M., & Akash, M. S. R. (2023). WasteSafe 2023, Khulna, Bangladesh, February 25-26.',
-    },
-    {
-        type: 'Conference',
-        title: 'Adsorption of chromium from tannery wastewater on russet potato peel charcoal',
-        details: 'Paul, S., Milu, M. S., Hashem, M. A., & Akash, M. S. R. (2021). ICSTB-2021, Dhaka, Bangladesh, March 11-13.',
-    },
-    {
-        type: 'Poster Presentation',
-        title: 'Designed air-technology-based autofitting footwear with eco-friendly composite sole',
-        details: 'Akash, M.S.R., et al. (2023). Presented at 4th Annual Seminar on Leather Sector, KUET.',
-    },
-    {
-        type: 'Poster Presentation',
-        title: 'Developed fire-resistant automobile seat leather using biodegradable orange peel-preserved goat skin',
-        details: 'Akash, M.S.R., et al. (2023). Presented at 4th Annual Seminar on Leather Sector, KUET.',
     }
 ];
 
